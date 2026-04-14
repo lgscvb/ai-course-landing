@@ -15,10 +15,10 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="mx-4 mt-3 sm:mx-6 lg:mx-8">
-        <nav className="mx-auto max-w-5xl rounded-2xl bg-white/90 backdrop-blur-xl border border-gray-200/50 shadow-lg shadow-black/5 px-5 sm:px-6">
-          <div className="flex h-14 items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 h-[52px] bg-white/82 backdrop-blur-[20px] backdrop-saturate-[180%] border-b border-border-light">
+      <div className="mx-auto max-w-[1080px] px-6">
+        <nav>
+          <div className="flex h-[52px] items-center justify-between">
             {/* ---- Logo ---- */}
             <Link
               href="/"
@@ -61,7 +61,7 @@ export default function Header() {
                 href={GOOGLE_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-3 inline-flex items-center gap-1.5 rounded-lg bg-accent px-4 py-2 text-sm font-bold text-white hover:bg-accent-hover transition-colors duration-200 cursor-pointer shadow-sm shadow-orange-500/20"
+                className="ml-3 inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2 text-[13px] font-medium text-white hover:bg-primary-light transition-all duration-200 cursor-pointer hover:scale-[1.025]"
               >
                 {"\u514D\u8CBB\u5831\u540D"}
                 {/* Heroicons: arrow-right (mini) */}
@@ -131,7 +131,7 @@ export default function Header() {
                 href={GOOGLE_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-lg bg-accent px-4 py-2.5 text-center text-sm font-bold text-white hover:bg-accent-hover transition-colors duration-200 cursor-pointer"
+                className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-center text-[13px] font-medium text-white hover:bg-primary-light transition-all duration-200 cursor-pointer"
                 onClick={() => setIsOpen(false)}
               >
                 {"\u514D\u8CBB\u5831\u540D"}

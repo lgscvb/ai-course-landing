@@ -1,139 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap');
 @import "tailwindcss";
 
-/* ------------------------------------------------------------------
-   Design tokens
-   Inspired by css-for-js.dev deep dark + vibrant gradient palette,
-   adapted for Taiwan market (high density, authority, urgency).
-   ------------------------------------------------------------------ */
-
+/* ─── Lico Design System ─────────────────────────────────────── */
 :root {
-  /* Dark palette */
-  --hero-bg: #080F1A;
-  --hero-surface: #0F1729;
-  --hero-card: #1A2332;
-
-  /* Brand */
-  --primary: #6366F1;
-  --primary-light: #818CF8;
-  --accent: #F97316;
-  --accent-hover: #FB923C;
-  --success: #10B981;
-
-  /* Text on dark */
-  --hero-text: #E2E8F0;
-  --hero-muted: #94A3B8;
-
-  /* Light palette */
-  --light-bg: #F8FAFC;
-  --light-surface: #FFFFFF;
-  --light-text: #0F172A;
-  --light-text-secondary: #475569;
-
-  /* Borders */
-  --border-light: #E2E8F0;
-  --border-dark: rgba(255, 255, 255, 0.08);
+  --c-black:   #1d1d1f;
+  --c-gray:    #6e6e73;
+  --c-light:   #aeaeb2;
+  --c-bg:      #f5f5f7;
+  --c-white:   #ffffff;
+  --c-blue:    #0071e3;
+  --c-blue-hv: #0077ed;
+  --c-purple:  #7850ff;
+  --c-green:   #30d158;
+  --c-orange:  #ff9500;
+  --c-divider: rgba(0,0,0,0.07);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+  --shadow-card: 0 2px 20px rgba(0,0,0,0.07);
+  --shadow-hover: 0 20px 50px rgba(0,0,0,0.11);
+  --ease-out: cubic-bezier(0.16,1,0.3,1);
 }
 
-/* ------------------------------------------------------------------
-   Tailwind v4 @theme inline -- exposes tokens as utilities
-   e.g. bg-hero-bg, text-primary, border-border-light, etc.
-   ------------------------------------------------------------------ */
-
+/* ─── Tailwind v4 @theme inline ─────────────────────────────── */
 @theme inline {
-  --color-hero-bg: var(--hero-bg);
-  --color-hero-surface: var(--hero-surface);
-  --color-hero-card: var(--hero-card);
-
-  --color-primary: var(--primary);
-  --color-primary-light: var(--primary-light);
-  --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
-  --color-success: var(--success);
-
-  --color-hero-text: var(--hero-text);
-  --color-hero-muted: var(--hero-muted);
-
-  --color-light-bg: var(--light-bg);
-  --color-light-surface: var(--light-surface);
-  --color-light-text: var(--light-text);
-  --color-light-text-secondary: var(--light-text-secondary);
-
-  --color-border-light: var(--border-light);
-  --color-border-dark: var(--border-dark);
-
-  /* Legacy aliases (keeps existing page.tsx classes working) */
-  --color-cta: var(--accent);
-  --color-cta-dark: #EA580C;
-  --color-cta-light: #FFF7ED;
-  --color-dark-bg: var(--hero-bg);
-  --color-dark-surface: var(--hero-surface);
-  --color-background: var(--light-bg);
-  --color-surface: var(--light-surface);
-  --color-text: var(--light-text);
-  --color-text-secondary: var(--light-text-secondary);
-  --color-text-muted: var(--hero-muted);
-  --color-border: var(--border-light);
-  --color-primary-dark: #4F46E5;
-  --color-primary-light-bg: #EEF2FF;
-
-  --font-sans: "Noto Sans TC", system-ui, sans-serif;
+  --color-hero-bg: #000000;
+  --color-hero-surface: #1c1c1e;
+  --color-hero-card: #2a2a2e;
+  --color-primary: #0071e3;
+  --color-primary-light: #0077ed;
+  --color-accent: #ff9500;
+  --color-accent-hover: #e68600;
+  --color-success: #30d158;
+  --color-purple: #7850ff;
+  --color-hero-text: #ffffff;
+  --color-hero-muted: #aeaeb2;
+  --color-light-bg: #f5f5f7;
+  --color-light-surface: #ffffff;
+  --color-light-text: #1d1d1f;
+  --color-light-text-secondary: #6e6e73;
+  --color-border-light: rgba(0,0,0,0.07);
+  --color-border-dark: rgba(255,255,255,0.06);
+  /* Legacy aliases */
+  --color-cta: #ff9500;
+  --color-cta-dark: #e68600;
+  --color-dark-bg: #000000;
+  --color-dark-surface: #1c1c1e;
+  --color-background: #f5f5f7;
+  --color-surface: #ffffff;
+  --color-text: #1d1d1f;
+  --color-text-secondary: #6e6e73;
+  --color-text-muted: #aeaeb2;
+  --color-border: rgba(0,0,0,0.07);
+  --color-primary-dark: #005bb5;
+  --font-sans: "Inter", "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* ------------------------------------------------------------------
-   Base styles
-   ------------------------------------------------------------------ */
-
+/* ─── Base ───────────────────────────────────────────────────── */
 body {
-  background: var(--light-bg);
-  color: var(--light-text);
-  font-family: "Noto Sans TC", system-ui, sans-serif;
-  font-display: swap;
+  background: var(--c-white);
+  color: var(--c-black);
+  font-family: "Inter", "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
 }
 
-/* ------------------------------------------------------------------
-   Utility classes -- gradient text
-   ------------------------------------------------------------------ */
-
+/* ─── Gradient text ──────────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #818CF8, #C084FC, #F472B6);
+  background: linear-gradient(135deg, #0071e3, #7850ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
 .gradient-text-gold {
-  background: linear-gradient(135deg, #F97316, #FBBF24, #F59E0B);
+  background: linear-gradient(135deg, #ff9500, #ffcc00);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ------------------------------------------------------------------
-   Utility classes -- glow card
-   ------------------------------------------------------------------ */
-
+/* ─── Glow card (Apple subtle) ───────────────────────────────── */
 .glow-card {
-  background: rgba(99, 102, 241, 0.05);
-  border: 1px solid rgba(99, 102, 241, 0.15);
-  transition: all 0.3s ease;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
 }
-
 .glow-card:hover {
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 0 30px rgba(99, 102, 241, 0.1);
+  border-color: rgba(255,255,255,0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 
-/* ------------------------------------------------------------------
-   Accessibility: reduced motion
-   ------------------------------------------------------------------ */
-
+/* ─── Accessibility ──────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

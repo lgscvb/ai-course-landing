@@ -27,10 +27,9 @@ export default function CTAButton({
   /* ---- Variant tokens ---- */
   const variantClasses: Record<string, string> = {
     primary: [
-      "bg-gradient-to-r from-orange-500 to-amber-500",
-      "text-white font-bold",
-      "shadow-lg shadow-orange-500/25",
-      "hover:scale-[1.02] hover:shadow-xl hover:shadow-orange-500/30",
+      "bg-primary text-white font-medium",
+      "hover:bg-primary-light",
+      "hover:scale-[1.025]",
       "active:scale-[0.98]",
     ].join(" "),
     secondary: [
@@ -41,8 +40,8 @@ export default function CTAButton({
       "active:scale-[0.98]",
     ].join(" "),
     light: [
-      "bg-gray-900 text-white font-bold",
-      "hover:bg-gray-800",
+      "bg-primary text-white font-medium",
+      "hover:bg-primary-light",
       "active:scale-[0.98]",
     ].join(" "),
   };
@@ -59,7 +58,7 @@ export default function CTAButton({
   const targetHref = href || GOOGLE_FORM_URL;
 
   const cls = [
-    "inline-flex items-center justify-center rounded-lg",
+    "inline-flex items-center justify-center rounded-full",
     "transition-all duration-200 cursor-pointer",
     sizeClasses[size],
     variantClasses[variant],

@@ -26,6 +26,8 @@ interface Instructor {
   credentials: string[];
   teaches: string[];
   resources: Resource[];
+  authorityTitle: string;
+  authorityProofs: string[];
 }
 
 const instructors: Instructor[] = [
@@ -61,6 +63,15 @@ const instructors: Instructor[] = [
         url: "https://github.com/lgscvb/claude-code-quickstart",
       },
     ],
+    authorityTitle: "不是理論，是現在進行式",
+    authorityProofs: [
+      "同時經營兩間公司，一間科技、一間不動產",
+      "大學講師 + 政府 SIIR/SBIR 計畫講師",
+      "每天只工作 4 小時，一週工作 4 天",
+      "90% 的工作用語音輸入 + Claude Code 口述完成",
+      "本課程的 Landing Page 就是用 Claude Code 建的",
+      "從想法到上線部署，全程不用手動寫一行程式碼",
+    ],
   },
   {
     name: "王琮瑋（Tobias）",
@@ -85,6 +96,13 @@ const instructors: Instructor[] = [
       "品牌視覺一致性",
     ],
     resources: [],
+    authorityTitle: "讓 AI 成為你的創意團隊",
+    authorityProofs: [
+      "AI 多媒體創作的早期實踐者",
+      "深度掌握 AI 影片生成與虛擬人像技術",
+      "Canva AI 功能的深度使用者與教學者",
+      "Workation Lab 合作講師，課程評價優異",
+    ],
   },
 ];
 
@@ -106,6 +124,69 @@ const whyClaudeCode = [
   },
 ] as const;
 
+const credibilityStats = [
+  { value: "2 位", label: "業界講師" },
+  { value: "24 小時", label: "密集實戰" },
+  { value: "90%", label: "口述完成工作" },
+  { value: "4 小時", label: "每日工作時數" },
+];
+
+interface ComparisonRow {
+  feature: string;
+  chatgpt: boolean;
+  lovable: boolean | string;
+  claudeCode: boolean;
+}
+
+const comparisonRows: ComparisonRow[] = [
+  { feature: "做出畫面", chatgpt: true, lovable: true, claudeCode: true },
+  {
+    feature: "部署上線",
+    chatgpt: false,
+    lovable: "limited",
+    claudeCode: true,
+  },
+  {
+    feature: "你看得懂做了什麼",
+    chatgpt: false,
+    lovable: false,
+    claudeCode: true,
+  },
+  { feature: "壞了你能修", chatgpt: false, lovable: false, claudeCode: true },
+  {
+    feature: "不綁定平台",
+    chatgpt: true,
+    lovable: false,
+    claudeCode: true,
+  },
+  {
+    feature: "資料完全在你手上",
+    chatgpt: true,
+    lovable: false,
+    claudeCode: true,
+  },
+];
+
+interface JourneyStage {
+  label: string;
+  description: string;
+  color: "green" | "red" | "gold";
+  highlight?: string;
+}
+
+const journeyStages: JourneyStage[] = [
+  { label: "興奮期", description: "AI 可以幫我做網站！", color: "green" },
+  { label: "蜜月期", description: "哇做出東西了！", color: "green" },
+  {
+    label: "撞牆期",
+    description: "怎麼改了A壞了B？",
+    color: "red",
+    highlight: "99% 的人卡在這裡",
+  },
+  { label: "燒錢期", description: "花了 $200 還上不了線", color: "red" },
+  { label: "突破", description: "這堂課直接帶你到這裡", color: "gold" },
+];
+
 /* ------------------------------------------------------------------ */
 /*  Inline SVG helpers                                                 */
 /* ------------------------------------------------------------------ */
@@ -124,6 +205,44 @@ function CheckIcon({ className }: { className?: string }) {
         strokeLinecap="round"
         strokeLinejoin="round"
         d="m4.5 12.75 6 6 9-13.5"
+      />
+    </svg>
+  );
+}
+
+function CheckCircleIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+      />
+    </svg>
+  );
+}
+
+function XCircleIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
       />
     </svg>
   );
@@ -205,6 +324,63 @@ function SparklesIcon({ className }: { className?: string }) {
   );
 }
 
+function ArrowRightIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.5}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+      />
+    </svg>
+  );
+}
+
+function ChevronRightIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.5}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m8.25 4.5 7.5 7.5-7.5 7.5"
+      />
+    </svg>
+  );
+}
+
+function ArrowDownIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.5}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+      />
+    </svg>
+  );
+}
+
 const iconMap = {
   bolt: BoltIcon,
   globe: GlobeIcon,
@@ -214,6 +390,23 @@ const iconMap = {
 /* ------------------------------------------------------------------ */
 /*  Sub-components                                                     */
 /* ------------------------------------------------------------------ */
+
+function CredibilityBar() {
+  return (
+    <div className="bg-hero-card rounded-2xl p-6 sm:p-8">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
+        {credibilityStats.map((stat) => (
+          <div key={stat.label} className="text-center">
+            <p className="text-2xl sm:text-3xl font-black gradient-text-gold leading-tight">
+              {stat.value}
+            </p>
+            <p className="text-sm text-hero-muted mt-1">{stat.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function ProfileCard({ inst }: { inst: Instructor }) {
   const gradientBg =
@@ -270,6 +463,26 @@ function ProfileCard({ inst }: { inst: Instructor }) {
   );
 }
 
+function AuthorityProof({ inst }: { inst: Instructor }) {
+  return (
+    <div className="mt-8 rounded-xl border border-success/20 bg-success/5 p-6">
+      <h4 className="text-sm font-bold uppercase tracking-widest text-success mb-4">
+        {inst.authorityTitle}
+      </h4>
+      <ul className="space-y-3">
+        {inst.authorityProofs.map((proof, i) => (
+          <li key={i} className="flex items-start gap-3 text-sm">
+            <CheckCircleIcon className="h-5 w-5 flex-shrink-0 text-success mt-0.5" />
+            <span className="text-light-text-secondary leading-relaxed">
+              {proof}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function InstructorDetails({ inst }: { inst: Instructor }) {
   const borderColor =
     inst.color === "indigo" ? "border-primary/40" : "border-violet-400/40";
@@ -306,6 +519,9 @@ function InstructorDetails({ inst }: { inst: Instructor }) {
           </div>
         ))}
       </div>
+
+      {/* Authority Proof */}
+      <AuthorityProof inst={inst} />
     </div>
   );
 }
@@ -330,6 +546,318 @@ function WhyClaudeCodeCard({
   );
 }
 
+function ComparisonCellIcon({
+  value,
+}: {
+  value: boolean | string;
+}) {
+  if (value === true) {
+    return <CheckCircleIcon className="h-5 w-5 text-success mx-auto" />;
+  }
+  if (value === "limited") {
+    return (
+      <span className="flex flex-col items-center gap-0.5">
+        <CheckCircleIcon className="h-5 w-5 text-success" />
+        <span className="text-[10px] text-hero-muted">平台綁定</span>
+      </span>
+    );
+  }
+  return <XCircleIcon className="h-5 w-5 text-red-400 mx-auto" />;
+}
+
+function ComparisonTable() {
+  return (
+    <div className="mt-16">
+      <h3 className="text-2xl sm:text-3xl font-black text-light-text text-center mb-10">
+        為什麼不是其他工具？
+      </h3>
+      <div className="overflow-x-auto rounded-2xl">
+        <table className="w-full bg-hero-bg rounded-2xl overflow-hidden">
+          <thead>
+            <tr className="border-b border-white/10">
+              <th className="text-left px-5 py-4 text-sm font-bold text-hero-muted w-[30%]">
+                功能
+              </th>
+              <th className="text-center px-4 py-4 text-sm font-bold text-hero-muted">
+                ChatGPT / Claude
+                <span className="block text-[10px] text-hero-muted/60 font-normal mt-0.5">
+                  對話框
+                </span>
+              </th>
+              <th className="text-center px-4 py-4 text-sm font-bold text-hero-muted">
+                Lovable / Bolt
+                <span className="block text-[10px] text-hero-muted/60 font-normal mt-0.5">
+                  AI Builder
+                </span>
+              </th>
+              <th className="text-center px-4 py-4 text-sm font-bold text-white">
+                <span className="gradient-text font-black">Claude Code</span>
+                <span className="block text-[10px] text-primary-light font-normal mt-0.5">
+                  我們教的
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {comparisonRows.map((row, i) => (
+              <tr
+                key={row.feature}
+                className={`border-b border-white/5 transition-colors duration-200 ${
+                  i % 2 === 0 ? "bg-white/[0.02]" : ""
+                }`}
+              >
+                <td className="px-5 py-4 text-sm text-hero-text font-medium">
+                  {row.feature}
+                </td>
+                <td className="px-4 py-4 text-center">
+                  <ComparisonCellIcon value={row.chatgpt} />
+                </td>
+                <td className="px-4 py-4 text-center">
+                  <ComparisonCellIcon value={row.lovable} />
+                </td>
+                <td className="px-4 py-4 text-center bg-primary/5">
+                  <ComparisonCellIcon value={row.claudeCode} />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="text-center text-sm text-light-text-secondary mt-6 max-w-xl mx-auto leading-relaxed">
+        只有 Claude Code 讓你同時擁有「做出東西的能力」和「理解自己做了什麼的能力」。其他工具，二者只能選一。
+      </p>
+    </div>
+  );
+}
+
+function UserJourney() {
+  const stageColorMap = {
+    green: {
+      border: "border-success/40",
+      bg: "bg-success/10",
+      text: "text-success",
+      dot: "bg-success",
+      line: "bg-success/30",
+    },
+    red: {
+      border: "border-red-400/40",
+      bg: "bg-red-400/10",
+      text: "text-red-400",
+      dot: "bg-red-400",
+      line: "bg-red-400/30",
+    },
+    gold: {
+      border: "border-amber-400/40",
+      bg: "bg-amber-400/10",
+      text: "text-amber-400",
+      dot: "bg-amber-400",
+      line: "bg-amber-400/30",
+    },
+  };
+
+  return (
+    <div className="mt-20">
+      <h3 className="text-2xl sm:text-3xl font-black text-light-text text-center mb-4">
+        99% 的人卡在這裡
+      </h3>
+      <p className="text-center text-sm text-light-text-secondary mb-12 max-w-lg mx-auto">
+        學 AI 做東西不難，難的是做出「能用、能改、能上線」的東西。
+      </p>
+
+      {/* Desktop: horizontal journey */}
+      <div className="hidden md:block">
+        <div className="relative flex items-start justify-between max-w-4xl mx-auto">
+          {/* Connecting line */}
+          <div className="absolute top-6 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-success/40 via-red-400/40 to-amber-400/40" />
+
+          {journeyStages.map((stage, i) => {
+            const colors = stageColorMap[stage.color];
+            const isHighlighted = !!stage.highlight;
+            const isLast = i === journeyStages.length - 1;
+
+            return (
+              <div
+                key={stage.label}
+                className="relative flex flex-col items-center text-center"
+                style={{ width: "20%" }}
+              >
+                {/* Dot */}
+                <div
+                  className={`relative z-10 h-12 w-12 rounded-full flex items-center justify-center ${
+                    isHighlighted
+                      ? "bg-red-500 ring-4 ring-red-400/30 animate-pulse"
+                      : isLast
+                        ? "bg-gradient-to-br from-amber-400 to-orange-500 ring-4 ring-amber-400/30"
+                        : `${colors.bg} border-2 ${colors.border}`
+                  }`}
+                >
+                  {isLast ? (
+                    <SparklesIcon className="h-5 w-5 text-white" />
+                  ) : isHighlighted ? (
+                    <span className="text-white text-lg font-black">!</span>
+                  ) : (
+                    <span className={`text-sm font-bold ${colors.text}`}>
+                      {i + 1}
+                    </span>
+                  )}
+                </div>
+
+                {/* Label */}
+                <p
+                  className={`mt-3 text-sm font-bold ${
+                    isHighlighted
+                      ? "text-red-500"
+                      : isLast
+                        ? "gradient-text-gold"
+                        : colors.text
+                  }`}
+                >
+                  {stage.label}
+                </p>
+
+                {/* Description */}
+                <p
+                  className={`mt-1 text-xs leading-relaxed ${
+                    isHighlighted || isLast
+                      ? "text-light-text font-medium"
+                      : "text-light-text-secondary"
+                  }`}
+                >
+                  {stage.description}
+                </p>
+
+                {/* Highlight callout */}
+                {isHighlighted && (
+                  <div className="mt-3 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-400/30">
+                    <p className="text-[11px] font-bold text-red-400">
+                      {stage.highlight}
+                    </p>
+                  </div>
+                )}
+
+                {/* Arrow pointing to last stage */}
+                {isLast && (
+                  <div className="mt-3 px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-400/10 to-orange-500/10 border border-amber-400/30">
+                    <p className="text-[11px] font-bold gradient-text-gold flex items-center gap-1">
+                      <ArrowRightIcon className="h-3 w-3 text-amber-400" />
+                      直達這裡
+                    </p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Mobile: vertical journey */}
+      <div className="md:hidden">
+        <div className="relative max-w-sm mx-auto">
+          {journeyStages.map((stage, i) => {
+            const colors = stageColorMap[stage.color];
+            const isHighlighted = !!stage.highlight;
+            const isLast = i === journeyStages.length - 1;
+            const isFirst = i === 0;
+
+            return (
+              <div key={stage.label} className="relative flex gap-4">
+                {/* Vertical line + dot */}
+                <div className="flex flex-col items-center">
+                  {/* Connector line top */}
+                  {!isFirst && (
+                    <div
+                      className={`w-0.5 h-4 ${
+                        stage.color === "red"
+                          ? "bg-red-400/30"
+                          : stage.color === "gold"
+                            ? "bg-amber-400/30"
+                            : "bg-success/30"
+                      }`}
+                    />
+                  )}
+
+                  {/* Dot */}
+                  <div
+                    className={`flex-shrink-0 h-10 w-10 rounded-full flex items-center justify-center ${
+                      isHighlighted
+                        ? "bg-red-500 ring-4 ring-red-400/30 animate-pulse"
+                        : isLast
+                          ? "bg-gradient-to-br from-amber-400 to-orange-500 ring-4 ring-amber-400/30"
+                          : `${colors.bg} border-2 ${colors.border}`
+                    }`}
+                  >
+                    {isLast ? (
+                      <SparklesIcon className="h-4 w-4 text-white" />
+                    ) : isHighlighted ? (
+                      <span className="text-white text-sm font-black">!</span>
+                    ) : (
+                      <span className={`text-xs font-bold ${colors.text}`}>
+                        {i + 1}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Connector line bottom */}
+                  {!isLast && (
+                    <div
+                      className={`w-0.5 flex-1 min-h-[16px] ${
+                        stage.color === "green"
+                          ? "bg-success/30"
+                          : stage.color === "red"
+                            ? "bg-red-400/30"
+                            : "bg-amber-400/30"
+                      }`}
+                    />
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className={`pb-6 ${isFirst ? "pt-0" : "pt-4"}`}>
+                  <p
+                    className={`text-sm font-bold ${
+                      isHighlighted
+                        ? "text-red-500"
+                        : isLast
+                          ? "gradient-text-gold"
+                          : colors.text
+                    }`}
+                  >
+                    {stage.label}
+                  </p>
+                  <p
+                    className={`text-xs mt-0.5 ${
+                      isHighlighted || isLast
+                        ? "text-light-text font-medium"
+                        : "text-light-text-secondary"
+                    }`}
+                  >
+                    {stage.description}
+                  </p>
+                  {isHighlighted && (
+                    <div className="mt-2 inline-block px-3 py-1 rounded-full bg-red-500/10 border border-red-400/30">
+                      <p className="text-[11px] font-bold text-red-400">
+                        {stage.highlight}
+                      </p>
+                    </div>
+                  )}
+                  {isLast && (
+                    <div className="mt-2 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-amber-400/10 to-orange-500/10 border border-amber-400/30">
+                      <ArrowRightIcon className="h-3 w-3 text-amber-400" />
+                      <p className="text-[11px] font-bold gradient-text-gold">
+                        直達這裡
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */
@@ -346,10 +874,13 @@ export default function InstructorsPage() {
           <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight tracking-tight mb-6">
             講師介紹
           </h1>
-          <p className="text-lg text-hero-muted max-w-2xl leading-relaxed">
+          <p className="text-lg text-hero-muted max-w-2xl leading-relaxed mb-10">
             兩位講師、兩個專長。前半程教你用 AI 自動化工作流程，後半程教你用 AI
             做影片和設計。
           </p>
+
+          {/* Credibility Stats Bar */}
+          <CredibilityBar />
         </div>
       </section>
 
@@ -389,6 +920,12 @@ export default function InstructorsPage() {
               <WhyClaudeCodeCard key={item.title} item={item} />
             ))}
           </div>
+
+          {/* Comparison Table */}
+          <ComparisonTable />
+
+          {/* User Journey */}
+          <UserJourney />
         </div>
       </section>
 

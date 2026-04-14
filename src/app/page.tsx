@@ -11,6 +11,84 @@ const painPoints = [
   "想做影片行銷，但不會拍也不會剪？",
 ];
 
+const useCases = [
+  {
+    industry: "電商經營",
+    pillClass: "bg-orange-100 text-orange-700",
+    before:
+      "蝦皮有新訂單 → 手動抄到 Excel。客戶 LINE 問有貨嗎 → 去蝦皮後台查庫存再回覆。每月底三個平台手動對帳。",
+    after:
+      "AI 自動同步蝦皮/LINE/官網訂單與庫存，客戶問就自動回覆即時庫存，月底自動產出對帳報表。",
+  },
+  {
+    industry: "會計 / 稅務",
+    pillClass: "bg-blue-100 text-blue-700",
+    before:
+      "做了報價單 PDF 給客戶，客戶說「數字改成 XX 呢？」回去改 Excel、重算、重新輸出、重新寄。來回三次一個下午沒了。",
+    after:
+      "做一個互動式網頁：客戶自己拉桿調營收，圖表即時算稅額。客戶自己調到滿意，直接成交。",
+  },
+  {
+    industry: "房仲業",
+    pillClass: "bg-green-100 text-green-700",
+    before:
+      "Excel 算投報率手動給客戶看。物件介紹只有文字和靜態照片。帶看影片不會拍也不會剪。",
+    after:
+      "客製化物件分析頁：輸入總價/貸款/租金，即時算投報率。AI 自動生成物件介紹影片和社群素材。",
+  },
+  {
+    industry: "行銷 / 自媒體",
+    pillClass: "bg-purple-100 text-purple-700",
+    before:
+      "想做影片行銷但不會 Premiere。社群素材用 Canva 免費版湊合。每篇貼文花 2 小時手動排版。",
+    after:
+      "AI 虛擬人像直接生成產品介紹影片。批量製作社群素材，品牌視覺自動一致。一篇貼文 10 分鐘搞定。",
+  },
+  {
+    industry: "客服 / LINE OA",
+    pillClass: "bg-teal-100 text-teal-700",
+    before:
+      "LINE 訊息手動回到半夜。客戶問重複問題每次都要重新打字。假日沒人顧，訊息堆到下週一。",
+    after:
+      "LINE Bot 自動分流：常見問題秒回、複雜問題轉人工。24 小時不漏接，假日也能自動回覆。",
+  },
+  {
+    industry: "管顧 / 事務所",
+    pillClass: "bg-rose-100 text-rose-700",
+    before:
+      "企業診斷報告用 Word 一家一家改。提案簡報 PPT 每次都從零開始。想幫客戶做數位轉型但自己也不會。",
+    after:
+      "模板化報告生成：header/footer 固定，中間依客戶資料自動產出。還能幫客戶建互動式數據儀表板。",
+  },
+];
+
+const marketStats = [
+  {
+    value: "92%",
+    valueClass: "gradient-text-gold",
+    label: "台灣中小企業僅粗淺了解 AI",
+    source: "-- 經濟部調查",
+  },
+  {
+    value: "99%",
+    valueClass: "gradient-text",
+    label: "的人在「撞牆期」就放棄",
+    source: "-- AI 使用者旅程研究",
+  },
+  {
+    value: "80/20",
+    valueClass: "text-white",
+    label: "AI 做了 80%，最後 20% 完成不了",
+    source: "-- 全球開發者社群共識",
+  },
+  {
+    value: "$0",
+    valueClass: "gradient-text-gold",
+    label: "學費 vs 外包網站 NT$30,000+",
+    source: "-- 政府全額補助",
+  },
+];
+
 const highlights = [
   {
     title: "學費 $0",
@@ -85,6 +163,13 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
               </svg>
               學費 $0
+            </span>
+            {/* Badge: 開課時間 */}
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-semibold text-accent">
+              <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 9v9.75" />
+              </svg>
+              4 月最後一週開課（平日班）
             </span>
           </div>
 
@@ -168,7 +253,110 @@ export default function Home() {
       </section>
 
       {/* ============================================================ */}
-      {/*  3. HIGHLIGHTS -- Why us                                      */}
+      {/*  3. USE CASES -- Before / After scenarios                     */}
+      {/* ============================================================ */}
+      <section className="bg-white py-20 sm:py-28">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-primary">
+              USE CASES
+            </p>
+            <h2 className="text-3xl font-black tracking-tight text-light-text sm:text-4xl">
+              各行各業，AI 都能幫上忙
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-light-text-secondary">
+              不管你是什麼行業，學完後都能立刻應用在工作上。
+            </p>
+          </div>
+
+          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {useCases.map((uc, i) => (
+              <div
+                key={i}
+                className="rounded-2xl border border-border-light bg-light-bg p-6 transition-all duration-300 hover:shadow-lg"
+              >
+                {/* Industry pill */}
+                <span
+                  className={`inline-block rounded-full px-3 py-1 text-xs font-bold ${uc.pillClass}`}
+                >
+                  {uc.industry}
+                </span>
+
+                {/* Before section */}
+                <div className="mt-4 rounded-xl bg-red-50 p-4">
+                  <p className="mb-1 text-xs font-bold uppercase tracking-wider text-red-500">
+                    以前
+                  </p>
+                  <p className="text-sm leading-relaxed text-light-text-secondary">
+                    {uc.before}
+                  </p>
+                </div>
+
+                {/* Arrow divider */}
+                <div className="flex justify-center py-2">
+                  <svg
+                    className="h-6 w-6 text-light-text-secondary"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+                    />
+                  </svg>
+                </div>
+
+                {/* After section */}
+                <div className="rounded-xl bg-green-50 p-4">
+                  <p className="mb-1 text-xs font-bold uppercase tracking-wider text-green-600">
+                    學完之後
+                  </p>
+                  <p className="text-sm leading-relaxed text-light-text-secondary">
+                    {uc.after}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/*  4. DATA -- Market statistics                                 */}
+      {/* ============================================================ */}
+      <section className="bg-hero-bg py-20 sm:py-28">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">
+              DATA
+            </p>
+            <h2 className="text-3xl font-black tracking-tight text-white sm:text-4xl">
+              數據會說話
+            </h2>
+          </div>
+
+          <div className="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4">
+            {marketStats.map((stat, i) => (
+              <div key={i} className="glow-card rounded-2xl p-6 text-center">
+                <p className={`text-5xl font-black ${stat.valueClass}`}>
+                  {stat.value}
+                </p>
+                <p className="mt-3 text-sm leading-snug text-hero-muted">
+                  {stat.label}
+                </p>
+                <p className="mt-1 text-xs text-hero-muted/60">{stat.source}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/*  5. HIGHLIGHTS -- Why us                                      */}
       {/* ============================================================ */}
       <section className="bg-white py-20 sm:py-28">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -202,7 +390,96 @@ export default function Home() {
       </section>
 
       {/* ============================================================ */}
-      {/*  4. OUTCOMES -- What you take home                            */}
+      {/*  6. INSTRUCTOR PREVIEW -- Quote + stats                       */}
+      {/* ============================================================ */}
+      <section className="bg-light-bg py-20 sm:py-28">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-primary">
+              INSTRUCTOR
+            </p>
+            <h2 className="text-3xl font-black tracking-tight text-light-text sm:text-4xl">
+              講師親身驗證，不是紙上談兵
+            </h2>
+          </div>
+
+          <div className="mt-14">
+            <div className="mx-auto max-w-3xl rounded-2xl border border-border-light bg-white p-8 sm:p-12">
+              <blockquote className="text-xl font-bold leading-relaxed text-light-text sm:text-2xl">
+                &ldquo;我現在同時是兩間公司的負責人，做三份工作，維持不動產投資人的身份，還在大學和政府計畫擔任講師。
+                <span className="gradient-text-gold">
+                  一天只工作四小時，一週工作四天。90% 的工作都是用口述完成的。
+                </span>
+                &rdquo;
+              </blockquote>
+
+              <div className="mt-6 flex items-center gap-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary to-indigo-700 text-xl font-black text-white">
+                  戴
+                </div>
+                <div>
+                  <p className="font-bold text-light-text">戴豪廷</p>
+                  <p className="text-sm text-light-text-secondary">
+                    AI 自動化講師 / 兩間公司負責人
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                <div className="text-center">
+                  <p className="text-2xl font-black text-primary">2</p>
+                  <p className="mt-1 text-xs text-light-text-secondary">
+                    間公司負責人
+                  </p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl font-black text-primary">3</p>
+                  <p className="mt-1 text-xs text-light-text-secondary">
+                    份工作同時進行
+                  </p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl font-black text-primary">4hr</p>
+                  <p className="mt-1 text-xs text-light-text-secondary">
+                    每日工作時數
+                  </p>
+                </div>
+                <div className="text-center">
+                  <p className="text-2xl font-black text-primary">90%</p>
+                  <p className="mt-1 text-xs text-light-text-secondary">
+                    口述完成工作
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 text-center">
+                <a
+                  href="/instructors"
+                  className="inline-flex cursor-pointer items-center gap-1 text-sm font-semibold text-primary transition-colors duration-200 hover:text-primary-light"
+                >
+                  看完整講師介紹
+                  <svg
+                    className="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/*  7. OUTCOMES -- What you take home                            */}
       {/* ============================================================ */}
       <section className="bg-hero-bg py-20 sm:py-28">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -240,7 +517,7 @@ export default function Home() {
       </section>
 
       {/* ============================================================ */}
-      {/*  5. COST COMPARISON                                           */}
+      {/*  8. COST COMPARISON                                           */}
       {/* ============================================================ */}
       <section className="bg-light-bg py-20 sm:py-28">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -291,7 +568,7 @@ export default function Home() {
       </section>
 
       {/* ============================================================ */}
-      {/*  6. FINAL CTA                                                 */}
+      {/*  9. FINAL CTA                                                 */}
       {/* ============================================================ */}
       <section
         className="py-20 sm:py-28"

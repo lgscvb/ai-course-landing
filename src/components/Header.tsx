@@ -24,7 +24,7 @@ export default function Header() {
               href="/"
               className="flex items-center gap-2.5 cursor-pointer"
             >
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+              <div className="h-8 w-8 rounded-lg bg-[#0071e3] flex items-center justify-center">
                 {/* Heroicons: sparkles */}
                 <svg
                   className="h-4 w-4 text-white"
@@ -40,7 +40,7 @@ export default function Header() {
                   />
                 </svg>
               </div>
-              <span className="font-bold text-light-text text-sm tracking-tight">
+              <span className="text-[17px] font-bold tracking-[-0.02em] text-[#1d1d1f]">
                 AI {"\u5BE6\u6230\u73ED"}
               </span>
             </Link>
@@ -51,7 +51,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="px-3 py-1.5 text-sm font-medium text-light-text-secondary hover:text-light-text rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
+                  className="px-3 py-1.5 text-[13px] text-[#6e6e73] hover:text-[#1d1d1f] rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
                 >
                   {item.label}
                 </Link>
@@ -61,7 +61,7 @@ export default function Header() {
                 href={GOOGLE_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-3 inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2 text-[13px] font-medium text-white hover:bg-primary-light transition-all duration-200 cursor-pointer hover:scale-[1.025]"
+                className="ml-3 inline-flex items-center gap-1.5 rounded-full bg-[#0071e3] px-5 py-2 text-[13px] font-medium text-white hover:bg-[#0077ed] hover:scale-[1.025] transition-all duration-200 cursor-pointer"
               >
                 {"\u514D\u8CBB\u5831\u540D"}
                 {/* Heroicons: arrow-right (mini) */}
@@ -89,7 +89,7 @@ export default function Header() {
               aria-expanded={isOpen}
             >
               <svg
-                className="h-5 w-5 text-light-text"
+                className="h-5 w-5 text-[#1d1d1f]"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth={2}
@@ -121,7 +121,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block py-2.5 px-2 text-sm font-medium text-light-text-secondary hover:text-light-text rounded-lg hover:bg-gray-50 transition-colors duration-200 cursor-pointer"
+                  className="block py-2.5 px-2 text-[13px] text-[#6e6e73] hover:text-[#1d1d1f] rounded-lg hover:bg-gray-50 transition-colors duration-200 cursor-pointer"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
@@ -131,7 +131,7 @@ export default function Header() {
                 href={GOOGLE_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-center text-[13px] font-medium text-white hover:bg-primary-light transition-all duration-200 cursor-pointer"
+                className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-full bg-[#0071e3] px-5 py-2.5 text-center text-[13px] font-medium text-white hover:bg-[#0077ed] transition-all duration-200 cursor-pointer"
                 onClick={() => setIsOpen(false)}
               >
                 {"\u514D\u8CBB\u5831\u540D"}

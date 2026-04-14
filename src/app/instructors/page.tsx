@@ -21,7 +21,7 @@ interface Instructor {
   initial: string;
   role: string;
   hours: string;
-  color: "indigo" | "violet";
+  color: "blue" | "purple";
   quote: string;
   credentials: string[];
   teaches: string[];
@@ -36,7 +36,7 @@ const instructors: Instructor[] = [
     initial: "戴",
     role: "AI 自動化 / Claude Code 實戰",
     hours: "12 小時（Day 1-2）",
-    color: "indigo",
+    color: "blue",
     quote:
       "我現在同時是兩間公司的負責人，做三份工作，維持不動產投資人的身份，還在大學和政府計畫擔任講師。一天只工作四小時，一週工作四天。90% 的工作都是用口述完成的。",
     credentials: [
@@ -78,7 +78,7 @@ const instructors: Instructor[] = [
     initial: "王",
     role: "AI 多媒體 / 影片生成 / 設計",
     hours: "12 小時（Day 3-4）",
-    color: "violet",
+    color: "purple",
     quote:
       "AI 不只是文字工具，它也能幫你拍影片、做設計、產出行銷素材。你不需要學 Premiere，不需要學 Photoshop——AI 就是你的創意團隊。",
     credentials: [
@@ -393,14 +393,14 @@ const iconMap = {
 
 function CredibilityBar() {
   return (
-    <div className="bg-hero-card rounded-2xl p-6 sm:p-8">
+    <div className="bg-hero-card rounded-[24px] p-6 sm:p-8">
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
         {credibilityStats.map((stat) => (
           <div key={stat.label} className="text-center">
             <p className="text-2xl sm:text-3xl font-black gradient-text-gold leading-tight">
               {stat.value}
             </p>
-            <p className="text-sm text-hero-muted mt-1">{stat.label}</p>
+            <p className="text-[13px] text-hero-muted mt-1">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -410,37 +410,37 @@ function CredibilityBar() {
 
 function ProfileCard({ inst }: { inst: Instructor }) {
   const gradientBg =
-    inst.color === "indigo"
-      ? "bg-gradient-to-br from-primary to-indigo-700"
-      : "bg-gradient-to-br from-violet-600 to-violet-800";
+    inst.color === "blue"
+      ? "bg-gradient-to-br from-[#0071e3] to-[#005bb5]"
+      : "bg-gradient-to-br from-[#7850ff] to-[#5a3cc7]";
 
   return (
-    <div className={`rounded-2xl p-8 text-white ${gradientBg}`}>
+    <div className={`rounded-[24px] p-8 text-white ${gradientBg}`}>
       {/* Avatar initial */}
-      <div className="h-20 w-20 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center text-4xl font-black mb-8">
+      <div className="h-20 w-20 rounded-[24px] bg-white/10 backdrop-blur-sm flex items-center justify-center text-4xl font-black mb-8">
         {inst.initial}
       </div>
 
-      <h2 className="text-2xl font-black mb-1">{inst.name}</h2>
-      <p className="text-sm text-white/70 mb-1">{inst.role}</p>
-      <p className="text-sm text-white/70 mb-8">{inst.hours}</p>
+      <h2 className="text-2xl font-black mb-1 tracking-[-0.03em]">{inst.name}</h2>
+      <p className="text-[13px] text-white/70 mb-1">{inst.role}</p>
+      <p className="text-[13px] text-white/70 mb-8">{inst.hours}</p>
 
       {/* Credentials */}
       <ul className="space-y-3">
         {inst.credentials.map((c, i) => (
-          <li key={i} className="flex items-start gap-3 text-sm">
-            <span className="flex-shrink-0 mt-0.5 h-5 w-5 rounded-full bg-white/20 flex items-center justify-center">
+          <li key={i} className="flex items-start gap-3 text-[15px]">
+            <span className="flex-shrink-0 mt-0.5 h-5 w-5 rounded-full bg-white/10 flex items-center justify-center">
               <CheckIcon className="h-3 w-3 text-white" />
             </span>
-            <span className="text-white/90">{c}</span>
+            <span className="text-white/90 leading-[1.65]">{c}</span>
           </li>
         ))}
       </ul>
 
       {/* Resources */}
       {inst.resources.length > 0 && (
-        <div className="mt-8 pt-8 border-t border-white/15">
-          <p className="text-xs font-bold uppercase tracking-widest text-white/50 mb-4">
+        <div className="mt-8 pt-8 border-t border-white/10">
+          <p className="text-[12px] font-semibold uppercase tracking-[0.1em] text-white/50 mb-4">
             教學資源
           </p>
           <div className="space-y-3">
@@ -450,7 +450,7 @@ function ProfileCard({ inst }: { inst: Instructor }) {
                 href={r.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-sm text-white/80 hover:text-white transition-colors duration-200 cursor-pointer"
+                className="flex items-center gap-2.5 text-[15px] text-white/80 hover:text-white transition-all duration-[350ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] cursor-pointer"
               >
                 <ExternalLinkIcon className="h-4 w-4 flex-shrink-0" />
                 {r.label}
@@ -465,15 +465,15 @@ function ProfileCard({ inst }: { inst: Instructor }) {
 
 function AuthorityProof({ inst }: { inst: Instructor }) {
   return (
-    <div className="mt-8 rounded-xl border border-success/20 bg-success/5 p-6">
-      <h4 className="text-sm font-bold uppercase tracking-widest text-success mb-4">
+    <div className="mt-8 rounded-xl border border-[#30d158]/20 bg-[#30d158]/5 p-6">
+      <h4 className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#30d158] mb-4">
         {inst.authorityTitle}
       </h4>
       <ul className="space-y-3">
         {inst.authorityProofs.map((proof, i) => (
-          <li key={i} className="flex items-start gap-3 text-sm">
-            <CheckCircleIcon className="h-5 w-5 flex-shrink-0 text-success mt-0.5" />
-            <span className="text-light-text-secondary leading-relaxed">
+          <li key={i} className="flex items-start gap-3 text-[15px]">
+            <CheckCircleIcon className="h-5 w-5 flex-shrink-0 text-[#30d158] mt-0.5" />
+            <span className="text-[#6e6e73] leading-[1.65]">
               {proof}
             </span>
           </li>
@@ -485,9 +485,9 @@ function AuthorityProof({ inst }: { inst: Instructor }) {
 
 function InstructorDetails({ inst }: { inst: Instructor }) {
   const borderColor =
-    inst.color === "indigo" ? "border-primary/40" : "border-violet-400/40";
+    inst.color === "blue" ? "border-[#0071e3]/40" : "border-[#7850ff]/40";
   const numberBg =
-    inst.color === "indigo" ? "bg-primary" : "bg-violet-600";
+    inst.color === "blue" ? "bg-[#0071e3]" : "bg-[#7850ff]";
 
   return (
     <div>
@@ -499,21 +499,21 @@ function InstructorDetails({ inst }: { inst: Instructor }) {
       </blockquote>
 
       {/* Teaching content */}
-      <h3 className="text-sm font-bold uppercase tracking-widest text-light-text-secondary mb-5">
+      <h3 className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#6e6e73] mb-5">
         教學內容
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {inst.teaches.map((t, i) => (
           <div
             key={i}
-            className="flex items-start gap-3 rounded-xl border border-border-light bg-light-surface p-4 transition-all duration-200 hover:shadow-md hover:border-primary/30 cursor-pointer"
+            className="flex items-start gap-3 rounded-xl border border-border-light bg-light-surface p-4 transition-all duration-[350ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.11)] hover:border-[#0071e3]/30 cursor-pointer"
           >
             <span
-              className={`flex-shrink-0 h-6 w-6 rounded-lg flex items-center justify-center text-xs font-bold text-white ${numberBg}`}
+              className={`flex-shrink-0 h-6 w-6 rounded-lg flex items-center justify-center text-[13px] font-bold text-white ${numberBg}`}
             >
               {i + 1}
             </span>
-            <span className="text-sm text-light-text-secondary leading-relaxed">
+            <span className="text-[15px] text-[#6e6e73] leading-[1.65]">
               {t}
             </span>
           </div>
@@ -534,12 +534,12 @@ function WhyClaudeCodeCard({
   const Icon = iconMap[item.icon];
 
   return (
-    <div className="rounded-2xl border border-border-light bg-light-surface p-8 transition-shadow duration-200 hover:shadow-md">
-      <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
-        <Icon className="h-6 w-6 text-primary" />
+    <div className="rounded-[24px] border border-border-light bg-light-surface p-8 transition-all duration-[350ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.11)]">
+      <div className="h-12 w-12 rounded-xl bg-[#0071e3]/10 flex items-center justify-center mb-6">
+        <Icon className="h-6 w-6 text-[#0071e3]" />
       </div>
-      <h3 className="text-lg font-black text-light-text mb-3">{item.title}</h3>
-      <p className="text-sm text-light-text-secondary leading-relaxed">
+      <h3 className="text-[17px] font-bold tracking-[-0.02em] text-[#1d1d1f] mb-3">{item.title}</h3>
+      <p className="text-[15px] text-[#6e6e73] leading-[1.65]">
         {item.body}
       </p>
     </div>
@@ -552,47 +552,47 @@ function ComparisonCellIcon({
   value: boolean | string;
 }) {
   if (value === true) {
-    return <CheckCircleIcon className="h-5 w-5 text-success mx-auto" />;
+    return <CheckCircleIcon className="h-5 w-5 text-[#30d158] mx-auto" />;
   }
   if (value === "limited") {
     return (
       <span className="flex flex-col items-center gap-0.5">
-        <CheckCircleIcon className="h-5 w-5 text-success" />
+        <CheckCircleIcon className="h-5 w-5 text-[#30d158]" />
         <span className="text-[10px] text-hero-muted">平台綁定</span>
       </span>
     );
   }
-  return <XCircleIcon className="h-5 w-5 text-red-400 mx-auto" />;
+  return <XCircleIcon className="h-5 w-5 text-[#ff6568] mx-auto" />;
 }
 
 function ComparisonTable() {
   return (
     <div className="mt-16">
-      <h3 className="text-2xl sm:text-3xl font-black text-light-text text-center mb-10">
+      <h3 className="text-2xl sm:text-3xl font-black text-light-text text-center mb-10 tracking-[-0.03em]">
         為什麼不是其他工具？
       </h3>
-      <div className="overflow-x-auto rounded-2xl">
-        <table className="w-full bg-hero-bg rounded-2xl overflow-hidden">
+      <div className="overflow-x-auto rounded-[24px]">
+        <table className="w-full bg-hero-bg rounded-[24px] overflow-hidden">
           <thead>
             <tr className="border-b border-white/10">
-              <th className="text-left px-5 py-4 text-sm font-bold text-hero-muted w-[30%]">
+              <th className="text-left px-5 py-4 text-[13px] font-bold text-hero-muted w-[30%]">
                 功能
               </th>
-              <th className="text-center px-4 py-4 text-sm font-bold text-hero-muted">
+              <th className="text-center px-4 py-4 text-[13px] font-bold text-hero-muted">
                 ChatGPT / Claude
                 <span className="block text-[10px] text-hero-muted/60 font-normal mt-0.5">
                   對話框
                 </span>
               </th>
-              <th className="text-center px-4 py-4 text-sm font-bold text-hero-muted">
+              <th className="text-center px-4 py-4 text-[13px] font-bold text-hero-muted">
                 Lovable / Bolt
                 <span className="block text-[10px] text-hero-muted/60 font-normal mt-0.5">
                   AI Builder
                 </span>
               </th>
-              <th className="text-center px-4 py-4 text-sm font-bold text-white">
+              <th className="text-center px-4 py-4 text-[13px] font-bold text-white">
                 <span className="gradient-text font-black">Claude Code</span>
-                <span className="block text-[10px] text-primary-light font-normal mt-0.5">
+                <span className="block text-[10px] text-[#0077ed] font-normal mt-0.5">
                   我們教的
                 </span>
               </th>
@@ -602,11 +602,11 @@ function ComparisonTable() {
             {comparisonRows.map((row, i) => (
               <tr
                 key={row.feature}
-                className={`border-b border-white/5 transition-colors duration-200 ${
+                className={`border-b border-white/5 transition-all duration-[350ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] ${
                   i % 2 === 0 ? "bg-white/[0.02]" : ""
                 }`}
               >
-                <td className="px-5 py-4 text-sm text-hero-text font-medium">
+                <td className="px-5 py-4 text-[15px] text-hero-text font-medium">
                   {row.feature}
                 </td>
                 <td className="px-4 py-4 text-center">
@@ -615,7 +615,7 @@ function ComparisonTable() {
                 <td className="px-4 py-4 text-center">
                   <ComparisonCellIcon value={row.lovable} />
                 </td>
-                <td className="px-4 py-4 text-center bg-primary/5">
+                <td className="px-4 py-4 text-center bg-[#0071e3]/5">
                   <ComparisonCellIcon value={row.claudeCode} />
                 </td>
               </tr>
@@ -623,7 +623,7 @@ function ComparisonTable() {
           </tbody>
         </table>
       </div>
-      <p className="text-center text-sm text-light-text-secondary mt-6 max-w-xl mx-auto leading-relaxed">
+      <p className="text-center text-[15px] text-[#6e6e73] mt-6 max-w-xl mx-auto leading-[1.65]">
         只有 Claude Code 讓你同時擁有「做出東西的能力」和「理解自己做了什麼的能力」。其他工具，二者只能選一。
       </p>
     </div>
@@ -633,34 +633,34 @@ function ComparisonTable() {
 function UserJourney() {
   const stageColorMap = {
     green: {
-      border: "border-success/40",
-      bg: "bg-success/10",
-      text: "text-success",
-      dot: "bg-success",
-      line: "bg-success/30",
+      border: "border-[#30d158]/40",
+      bg: "bg-[#30d158]/10",
+      text: "text-[#30d158]",
+      dot: "bg-[#30d158]",
+      line: "bg-[#30d158]/30",
     },
     red: {
-      border: "border-red-400/40",
-      bg: "bg-red-400/10",
-      text: "text-red-400",
-      dot: "bg-red-400",
-      line: "bg-red-400/30",
+      border: "border-[#ff6568]/40",
+      bg: "bg-[#ff6568]/10",
+      text: "text-[#ff6568]",
+      dot: "bg-[#ff6568]",
+      line: "bg-[#ff6568]/30",
     },
     gold: {
-      border: "border-amber-400/40",
-      bg: "bg-amber-400/10",
-      text: "text-amber-400",
-      dot: "bg-amber-400",
-      line: "bg-amber-400/30",
+      border: "border-[#ff9500]/40",
+      bg: "bg-[#ff9500]/10",
+      text: "text-[#ff9500]",
+      dot: "bg-[#ff9500]",
+      line: "bg-[#ff9500]/30",
     },
   };
 
   return (
     <div className="mt-20">
-      <h3 className="text-2xl sm:text-3xl font-black text-light-text text-center mb-4">
+      <h3 className="text-2xl sm:text-3xl font-black text-light-text text-center mb-4 tracking-[-0.03em]">
         99% 的人卡在這裡
       </h3>
-      <p className="text-center text-sm text-light-text-secondary mb-12 max-w-lg mx-auto">
+      <p className="text-center text-[15px] text-[#6e6e73] mb-12 max-w-lg mx-auto leading-[1.65]">
         學 AI 做東西不難，難的是做出「能用、能改、能上線」的東西。
       </p>
 
@@ -668,7 +668,7 @@ function UserJourney() {
       <div className="hidden md:block">
         <div className="relative flex items-start justify-between max-w-4xl mx-auto">
           {/* Connecting line */}
-          <div className="absolute top-6 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-success/40 via-red-400/40 to-amber-400/40" />
+          <div className="absolute top-6 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-[#30d158]/40 via-[#ff6568]/40 to-[#ff9500]/40" />
 
           {journeyStages.map((stage, i) => {
             const colors = stageColorMap[stage.color];
@@ -685,9 +685,9 @@ function UserJourney() {
                 <div
                   className={`relative z-10 h-12 w-12 rounded-full flex items-center justify-center ${
                     isHighlighted
-                      ? "bg-red-500 ring-4 ring-red-400/30 animate-pulse"
+                      ? "bg-[#ff6568] ring-4 ring-[#ff6568]/30 animate-pulse"
                       : isLast
-                        ? "bg-gradient-to-br from-amber-400 to-orange-500 ring-4 ring-amber-400/30"
+                        ? "bg-gradient-to-br from-[#ff9500] to-[#e08600] ring-4 ring-[#ff9500]/30"
                         : `${colors.bg} border-2 ${colors.border}`
                   }`}
                 >
@@ -696,7 +696,7 @@ function UserJourney() {
                   ) : isHighlighted ? (
                     <span className="text-white text-lg font-black">!</span>
                   ) : (
-                    <span className={`text-sm font-bold ${colors.text}`}>
+                    <span className={`text-[13px] font-bold ${colors.text}`}>
                       {i + 1}
                     </span>
                   )}
@@ -704,9 +704,9 @@ function UserJourney() {
 
                 {/* Label */}
                 <p
-                  className={`mt-3 text-sm font-bold ${
+                  className={`mt-3 text-[13px] font-bold ${
                     isHighlighted
-                      ? "text-red-500"
+                      ? "text-[#ff6568]"
                       : isLast
                         ? "gradient-text-gold"
                         : colors.text
@@ -717,10 +717,10 @@ function UserJourney() {
 
                 {/* Description */}
                 <p
-                  className={`mt-1 text-xs leading-relaxed ${
+                  className={`mt-1 text-[13px] leading-relaxed ${
                     isHighlighted || isLast
                       ? "text-light-text font-medium"
-                      : "text-light-text-secondary"
+                      : "text-[#6e6e73]"
                   }`}
                 >
                   {stage.description}
@@ -728,8 +728,8 @@ function UserJourney() {
 
                 {/* Highlight callout */}
                 {isHighlighted && (
-                  <div className="mt-3 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-400/30">
-                    <p className="text-[11px] font-bold text-red-400">
+                  <div className="mt-3 px-3 py-1.5 rounded-full bg-[#ff6568]/10 border border-[#ff6568]/30">
+                    <p className="text-[11px] font-bold text-[#ff6568]">
                       {stage.highlight}
                     </p>
                   </div>
@@ -737,9 +737,9 @@ function UserJourney() {
 
                 {/* Arrow pointing to last stage */}
                 {isLast && (
-                  <div className="mt-3 px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-400/10 to-orange-500/10 border border-amber-400/30">
+                  <div className="mt-3 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#ff9500]/10 to-[#e08600]/10 border border-[#ff9500]/30">
                     <p className="text-[11px] font-bold gradient-text-gold flex items-center gap-1">
-                      <ArrowRightIcon className="h-3 w-3 text-amber-400" />
+                      <ArrowRightIcon className="h-3 w-3 text-[#ff9500]" />
                       直達這裡
                     </p>
                   </div>
@@ -768,10 +768,10 @@ function UserJourney() {
                     <div
                       className={`w-0.5 h-4 ${
                         stage.color === "red"
-                          ? "bg-red-400/30"
+                          ? "bg-[#ff6568]/30"
                           : stage.color === "gold"
-                            ? "bg-amber-400/30"
-                            : "bg-success/30"
+                            ? "bg-[#ff9500]/30"
+                            : "bg-[#30d158]/30"
                       }`}
                     />
                   )}
@@ -780,18 +780,18 @@ function UserJourney() {
                   <div
                     className={`flex-shrink-0 h-10 w-10 rounded-full flex items-center justify-center ${
                       isHighlighted
-                        ? "bg-red-500 ring-4 ring-red-400/30 animate-pulse"
+                        ? "bg-[#ff6568] ring-4 ring-[#ff6568]/30 animate-pulse"
                         : isLast
-                          ? "bg-gradient-to-br from-amber-400 to-orange-500 ring-4 ring-amber-400/30"
+                          ? "bg-gradient-to-br from-[#ff9500] to-[#e08600] ring-4 ring-[#ff9500]/30"
                           : `${colors.bg} border-2 ${colors.border}`
                     }`}
                   >
                     {isLast ? (
                       <SparklesIcon className="h-4 w-4 text-white" />
                     ) : isHighlighted ? (
-                      <span className="text-white text-sm font-black">!</span>
+                      <span className="text-white text-[13px] font-black">!</span>
                     ) : (
-                      <span className={`text-xs font-bold ${colors.text}`}>
+                      <span className={`text-[13px] font-bold ${colors.text}`}>
                         {i + 1}
                       </span>
                     )}
@@ -802,10 +802,10 @@ function UserJourney() {
                     <div
                       className={`w-0.5 flex-1 min-h-[16px] ${
                         stage.color === "green"
-                          ? "bg-success/30"
+                          ? "bg-[#30d158]/30"
                           : stage.color === "red"
-                            ? "bg-red-400/30"
-                            : "bg-amber-400/30"
+                            ? "bg-[#ff6568]/30"
+                            : "bg-[#ff9500]/30"
                       }`}
                     />
                   )}
@@ -814,9 +814,9 @@ function UserJourney() {
                 {/* Content */}
                 <div className={`pb-6 ${isFirst ? "pt-0" : "pt-4"}`}>
                   <p
-                    className={`text-sm font-bold ${
+                    className={`text-[13px] font-bold ${
                       isHighlighted
-                        ? "text-red-500"
+                        ? "text-[#ff6568]"
                         : isLast
                           ? "gradient-text-gold"
                           : colors.text
@@ -825,24 +825,24 @@ function UserJourney() {
                     {stage.label}
                   </p>
                   <p
-                    className={`text-xs mt-0.5 ${
+                    className={`text-[13px] mt-0.5 ${
                       isHighlighted || isLast
                         ? "text-light-text font-medium"
-                        : "text-light-text-secondary"
+                        : "text-[#6e6e73]"
                     }`}
                   >
                     {stage.description}
                   </p>
                   {isHighlighted && (
-                    <div className="mt-2 inline-block px-3 py-1 rounded-full bg-red-500/10 border border-red-400/30">
-                      <p className="text-[11px] font-bold text-red-400">
+                    <div className="mt-2 inline-block px-3 py-1 rounded-full bg-[#ff6568]/10 border border-[#ff6568]/30">
+                      <p className="text-[11px] font-bold text-[#ff6568]">
                         {stage.highlight}
                       </p>
                     </div>
                   )}
                   {isLast && (
-                    <div className="mt-2 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-amber-400/10 to-orange-500/10 border border-amber-400/30">
-                      <ArrowRightIcon className="h-3 w-3 text-amber-400" />
+                    <div className="mt-2 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-[#ff9500]/10 to-[#e08600]/10 border border-[#ff9500]/30">
+                      <ArrowRightIcon className="h-3 w-3 text-[#ff9500]" />
                       <p className="text-[11px] font-bold gradient-text-gold">
                         直達這裡
                       </p>
@@ -868,13 +868,13 @@ export default function InstructorsPage() {
       {/* ---- Header ---- */}
       <section className="bg-hero-bg pt-32 pb-16">
         <div className="mx-auto max-w-5xl px-6">
-          <p className="text-xs font-bold tracking-[0.2em] text-primary-light uppercase mb-3">
+          <p className="text-[12px] font-semibold tracking-[0.1em] text-[#0077ed] uppercase mb-3">
             INSTRUCTORS
           </p>
-          <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight tracking-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight tracking-[-0.03em] mb-6">
             講師介紹
           </h1>
-          <p className="text-lg text-hero-muted max-w-2xl leading-relaxed mb-10">
+          <p className="text-[15px] text-hero-muted max-w-2xl leading-[1.65] mb-10">
             兩位講師、兩個專長。前半程教你用 AI 自動化工作流程，後半程教你用 AI
             做影片和設計。
           </p>
@@ -907,10 +907,10 @@ export default function InstructorsPage() {
       <section className="bg-light-bg py-16 sm:py-24">
         <div className="mx-auto max-w-5xl px-6">
           <div className="text-center mb-14">
-            <p className="text-xs font-bold tracking-[0.2em] text-primary-light uppercase mb-3">
+            <p className="text-[12px] font-semibold tracking-[0.1em] text-[#0077ed] uppercase mb-3">
               WHY CLAUDE CODE
             </p>
-            <h2 className="text-3xl sm:text-4xl font-black text-light-text">
+            <h2 className="text-3xl sm:text-4xl font-black text-light-text tracking-[-0.03em]">
               為什麼教 Claude Code？
             </h2>
           </div>
@@ -932,10 +932,10 @@ export default function InstructorsPage() {
       {/* ---- Bottom CTA ---- */}
       <section className="bg-hero-bg py-20">
         <div className="mx-auto max-w-5xl px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4 tracking-[-0.03em]">
             跟對的人學，少走三年彎路
           </h2>
-          <p className="text-hero-muted mb-10 max-w-lg mx-auto">
+          <p className="text-hero-muted mb-10 max-w-lg mx-auto text-[15px] leading-[1.65]">
             24 小時，兩位講師帶你從零到能用 AI 工作。
           </p>
           <CTAButton size="lg" />

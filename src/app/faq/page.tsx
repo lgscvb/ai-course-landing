@@ -49,7 +49,7 @@ const faqs = [
 function ChevronIcon({ open }: { open: boolean }) {
   return (
     <svg
-      className={`h-5 w-5 flex-shrink-0 text-light-text-secondary transition-transform duration-200 ${
+      className={`h-5 w-5 flex-shrink-0 text-[#aeaeb2] transition-transform duration-300 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] ${
         open ? "rotate-180" : ""
       }`}
       fill="none"
@@ -113,7 +113,7 @@ function FAQItem({
           aria-controls={panelId}
           className="group flex w-full cursor-pointer items-center justify-between py-6 text-left transition-colors duration-200"
         >
-          <span className="pr-8 text-lg font-bold text-light-text group-hover:text-primary transition-colors duration-200">
+          <span className="pr-8 text-[17px] font-bold tracking-[-0.02em] text-[#1d1d1f] group-hover:text-[#0071e3] transition-colors duration-200">
             {q}
           </span>
           <ChevronIcon open={open} />
@@ -124,12 +124,12 @@ function FAQItem({
         id={panelId}
         role="region"
         aria-labelledby={buttonId}
-        className={`grid transition-all duration-200 ${
+        className={`grid transition-all duration-300 ${
           open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
         }`}
       >
         <div className="overflow-hidden">
-          <p className="pb-6 text-light-text-secondary leading-relaxed">
+          <p className="pb-6 text-[15px] text-[#6e6e73] leading-[1.65]">
             {a}
           </p>
         </div>
@@ -146,15 +146,15 @@ export default function FAQPage() {
   return (
     <>
       {/* ---- Page Header ---- */}
-      <section className="bg-hero-bg pt-32 pb-16">
+      <section className="bg-black pt-32 pb-16">
         <div className="mx-auto max-w-5xl px-6">
-          <p className="text-xs font-bold tracking-[0.2em] text-primary-light uppercase mb-3">
+          <p className="text-xs font-bold tracking-[0.2em] text-[#0077ed] uppercase mb-3">
             FAQ
           </p>
           <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight tracking-tight mb-6">
             常見問題
           </h1>
-          <p className="text-lg text-hero-muted max-w-2xl leading-relaxed">
+          <p className="text-lg text-[#aeaeb2] max-w-2xl leading-relaxed">
             有疑問？這裡整理了最常被問到的問題。
             <br className="hidden sm:block" />
             如果找不到答案，歡迎直接聯繫我們。
@@ -162,10 +162,10 @@ export default function FAQPage() {
 
           {/* Decorative icon */}
           <div className="mt-8 flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-hero-card flex items-center justify-center">
-              <QuestionIcon className="h-5 w-5 text-primary-light" />
+            <div className="h-10 w-10 rounded-xl bg-white/[0.06] flex items-center justify-center">
+              <QuestionIcon className="h-5 w-5 text-[#0077ed]" />
             </div>
-            <span className="text-sm text-hero-muted">
+            <span className="text-sm text-[#aeaeb2]">
               {faqs.length} 個常見問題
             </span>
           </div>
@@ -184,21 +184,21 @@ export default function FAQPage() {
       </section>
 
       {/* ---- Bottom CTA ---- */}
-      <section className="bg-primary py-20">
+      <section className="bg-[#0071e3] py-20">
         <div className="mx-auto max-w-5xl px-6 text-center">
           <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
             不是 AI 不夠聰明，
             <br />
             是你不知道怎麼跟它說話。
           </h2>
-          <p className="text-indigo-100 mb-10 max-w-lg mx-auto leading-relaxed">
+          <p className="text-white/80 mb-10 max-w-lg mx-auto leading-relaxed">
             24 小時學會讓 AI 真正動手做事。學費 $0，名額有限。
           </p>
           <CTAButton
             size="lg"
             variant="primary"
             label="免費報名"
-            className="bg-white text-primary hover:bg-slate-50 font-bold shadow-lg"
+            className="bg-white text-[#0071e3] hover:bg-white hover:opacity-90 font-bold shadow-lg"
           />
         </div>
       </section>

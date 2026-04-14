@@ -22,7 +22,7 @@ interface Day {
   title: string;
   instructor: string;
   hours: string;
-  color: "indigo" | "violet";
+  color: "blue" | "purple";
   sessions: Session[];
 }
 
@@ -32,7 +32,7 @@ const days: Day[] = [
     title: "認識 AI 的五感",
     instructor: "戴豪廷",
     hours: "6 小時",
-    color: "indigo",
+    color: "blue",
     sessions: [
       {
         time: "上午 3hr",
@@ -60,7 +60,7 @@ const days: Day[] = [
     title: "AI 自動化實戰",
     instructor: "戴豪廷",
     hours: "6 小時",
-    color: "indigo",
+    color: "blue",
     sessions: [
       {
         time: "上午 3hr",
@@ -89,7 +89,7 @@ const days: Day[] = [
     title: "AI 多媒體入門",
     instructor: "王琮瑋（Tobias）",
     hours: "6 小時",
-    color: "violet",
+    color: "purple",
     sessions: [
       {
         time: "上午 3hr",
@@ -118,7 +118,7 @@ const days: Day[] = [
     title: "AI 多媒體進階 + 整合",
     instructor: "王琮瑋（Tobias）",
     hours: "6 小時",
-    color: "violet",
+    color: "purple",
     sessions: [
       {
         time: "上午 3hr",
@@ -292,20 +292,20 @@ const stats = [
 ];
 
 function DayHeader({ day }: { day: Day }) {
-  const badgeBg = day.color === "indigo" ? "bg-primary" : "bg-violet-600";
+  const badgeBg = day.color === "blue" ? "bg-[#0071e3]" : "bg-[#7850ff]";
 
   return (
     <div className="flex items-center gap-5">
       <div
-        className={`flex-shrink-0 h-16 w-16 rounded-2xl flex items-center justify-center text-white font-black text-2xl shadow-lg ${badgeBg}`}
+        className={`flex-shrink-0 h-16 w-16 rounded-[24px] flex items-center justify-center text-white font-black text-2xl shadow-lg ${badgeBg}`}
       >
         {day.number}
       </div>
       <div>
-        <h2 className="text-2xl sm:text-3xl font-black text-light-text">
+        <h2 className="text-2xl sm:text-3xl font-black text-light-text tracking-[-0.03em]">
           Day {day.number}：{day.title}
         </h2>
-        <div className="mt-1.5 flex items-center gap-4 text-sm text-light-text-secondary">
+        <div className="mt-1.5 flex items-center gap-4 text-[13px] text-[#6e6e73]">
           <span className="inline-flex items-center gap-1.5">
             <UserIcon className="h-4 w-4" />
             {day.instructor}
@@ -325,18 +325,18 @@ function SessionCard({
   color,
 }: {
   session: Session;
-  color: "indigo" | "violet";
+  color: "blue" | "purple";
 }) {
   const pillBg =
-    color === "indigo"
-      ? "bg-primary/10 text-primary"
-      : "bg-violet-100 text-violet-700";
+    color === "blue"
+      ? "bg-[#0071e3]/10 text-[#0071e3]"
+      : "bg-[#7850ff]/10 text-[#7850ff]";
   const checkColor =
-    color === "indigo" ? "text-primary" : "text-violet-600";
+    color === "blue" ? "text-[#0071e3]" : "text-[#7850ff]";
   const dotBorder =
-    color === "indigo"
-      ? "border-primary bg-white"
-      : "border-violet-600 bg-white";
+    color === "blue"
+      ? "border-[#0071e3] bg-white"
+      : "border-[#7850ff] bg-white";
 
   return (
     <div className="relative">
@@ -345,21 +345,21 @@ function SessionCard({
         className={`absolute -left-[2.3rem] top-2 h-3.5 w-3.5 rounded-full border-[3px] ${dotBorder}`}
       />
 
-      <div className="rounded-2xl border border-border-light bg-light-surface p-6 sm:p-8 transition-shadow duration-200 hover:shadow-md">
+      <div className="rounded-[24px] border border-border-light bg-light-surface p-6 sm:p-8 transition-all duration-[350ms] [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.11)]">
         <div className="flex flex-wrap items-center gap-3 mb-5">
           <span
-            className={`text-xs font-bold px-3 py-1 rounded-full ${pillBg}`}
+            className={`text-[13px] font-bold px-3 py-1 rounded-full ${pillBg}`}
           >
             {session.time}
           </span>
-          <h3 className="text-lg font-bold text-light-text">{session.title}</h3>
+          <h3 className="text-[17px] font-bold tracking-[-0.02em] text-[#1d1d1f]">{session.title}</h3>
         </div>
 
         <ul className="space-y-3">
           {session.items.map((item, i) => (
             <li
               key={i}
-              className="flex items-start gap-3 text-sm text-light-text-secondary leading-relaxed"
+              className="flex items-start gap-3 text-[15px] text-[#6e6e73] leading-[1.65]"
             >
               <CheckIcon
                 className={`h-5 w-5 mt-0.5 flex-shrink-0 ${checkColor}`}
@@ -383,13 +383,13 @@ export default function SyllabusPage() {
       {/* ---- Header ---- */}
       <section className="bg-hero-bg pt-32 pb-16">
         <div className="mx-auto max-w-5xl px-6">
-          <p className="text-xs font-bold tracking-[0.2em] text-primary-light uppercase mb-3">
+          <p className="text-[12px] font-semibold tracking-[0.1em] text-[#0077ed] uppercase mb-3">
             CURRICULUM
           </p>
-          <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight tracking-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight tracking-[-0.03em] mb-6">
             課程大綱
           </h1>
-          <p className="text-lg text-hero-muted max-w-2xl leading-relaxed">
+          <p className="text-[15px] text-hero-muted max-w-2xl leading-[1.65]">
             24 小時 = 4 天 x 6 小時。前半段學 AI 自動化（戴豪廷），後半段學 AI
             多媒體（王琮瑋）。每一堂都是動手做，不是坐著聽。
           </p>
@@ -404,15 +404,15 @@ export default function SyllabusPage() {
                   className="bg-hero-card rounded-xl p-4 text-center"
                 >
                   <div className="flex justify-center mb-2">
-                    <Icon className="h-5 w-5 text-primary-light" />
+                    <Icon className="h-5 w-5 text-[#0077ed]" />
                   </div>
                   <p className="text-2xl font-black text-white">
                     {stat.value}
-                    <span className="text-sm font-medium text-hero-muted ml-1">
+                    <span className="text-[13px] font-medium text-hero-muted ml-1">
                       {stat.unit}
                     </span>
                   </p>
-                  <p className="text-xs text-hero-muted mt-0.5">{stat.label}</p>
+                  <p className="text-[13px] text-hero-muted mt-0.5">{stat.label}</p>
                 </div>
               );
             })}
@@ -426,9 +426,9 @@ export default function SyllabusPage() {
           <div className="space-y-20">
             {days.map((day) => {
               const lineColor =
-                day.color === "indigo"
-                  ? "border-primary/30"
-                  : "border-violet-400/30";
+                day.color === "blue"
+                  ? "border-[#0071e3]/30"
+                  : "border-[#7850ff]/30";
 
               return (
                 <div key={day.number}>
@@ -454,19 +454,19 @@ export default function SyllabusPage() {
       </section>
 
       {/* ---- Bottom CTA ---- */}
-      <section className="bg-primary py-20">
+      <section className="bg-[#0071e3] py-20">
         <div className="mx-auto max-w-5xl px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4 tracking-[-0.03em]">
             準備好了嗎？
           </h2>
-          <p className="text-indigo-100 mb-10 max-w-lg mx-auto">
+          <p className="text-blue-100 mb-10 max-w-lg mx-auto text-[15px] leading-[1.65]">
             24 小時，從零到能用 AI 工作。學費 $0。
           </p>
           <CTAButton
             size="lg"
             variant="primary"
             label="免費報名"
-            className="bg-white text-primary hover:bg-slate-50 font-bold shadow-lg"
+            className="bg-white text-[#0071e3] hover:bg-slate-50 font-bold shadow-lg"
           />
         </div>
       </section>

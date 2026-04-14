@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-hero-bg text-hero-muted">
+    <footer className="bg-black text-[#aeaeb2]">
       <div className="mx-auto max-w-5xl px-6 py-16">
         {/* ---- 3-column grid ---- */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
           {/* Column 1: Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
+              <div className="h-8 w-8 rounded-lg bg-[#0071e3] flex items-center justify-center">
                 {/* Heroicons: sparkles */}
                 <svg
                   className="h-4 w-4 text-white"
@@ -25,25 +25,25 @@ export default function Footer() {
                   />
                 </svg>
               </div>
-              <span className="font-bold text-white text-sm">
+              <span className="text-[13px] font-semibold text-white">
                 AI {"\u5BE6\u6230\u73ED"}
               </span>
             </div>
-            <p className="text-sm leading-relaxed max-w-xs">
+            <p className="text-[13px] text-[#aeaeb2] leading-relaxed max-w-xs">
               {"\u7D93\u6FDF\u90E8\u7522\u696D\u4EBA\u624D\u6295\u8CC7\u65B9\u6848\u88DC\u52A9\u8AB2\u7A0B\u3002\u8B93\u975E\u5DE5\u7A0B\u5E2B\u4E5F\u80FD\u7528 AI \u771F\u6B63\u52D5\u624B\u505A\u4E8B\u3002"}
             </p>
           </div>
 
           {/* Column 2: Course links */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-4">
+            <h3 className="text-[13px] font-semibold text-white mb-4">
               {"\u8AB2\u7A0B\u8CC7\u8A0A"}
             </h3>
             <ul className="space-y-2.5">
               <li>
                 <Link
                   href="/syllabus"
-                  className="text-sm hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-[13px] text-[#aeaeb2] hover:text-white transition-colors duration-200 cursor-pointer"
                 >
                   {"\u8AB2\u7A0B\u5927\u7DB1"}
                 </Link>
@@ -51,7 +51,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/instructors"
-                  className="text-sm hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-[13px] text-[#aeaeb2] hover:text-white transition-colors duration-200 cursor-pointer"
                 >
                   {"\u8B1B\u5E2B\u4ECB\u7D39"}
                 </Link>
@@ -59,7 +59,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/faq"
-                  className="text-sm hover:text-white transition-colors duration-200 cursor-pointer"
+                  className="text-[13px] text-[#aeaeb2] hover:text-white transition-colors duration-200 cursor-pointer"
                 >
                   {"\u5E38\u898B\u554F\u984C"}
                 </Link>
@@ -69,7 +69,7 @@ export default function Footer() {
 
           {/* Column 3: Resources */}
           <div>
-            <h3 className="text-white font-semibold text-sm mb-4">
+            <h3 className="text-[13px] font-semibold text-white mb-4">
               {"\u6559\u5B78\u8CC7\u6E90"}
             </h3>
             <ul className="space-y-2.5">
@@ -78,7 +78,7 @@ export default function Footer() {
                   href="https://claude-code-tutorial-one.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm hover:text-white transition-colors duration-200 cursor-pointer inline-flex items-center gap-1.5"
+                  className="text-[13px] text-[#aeaeb2] hover:text-white transition-colors duration-200 cursor-pointer inline-flex items-center gap-1.5"
                 >
                   Claude Code {"\u6559\u5B78\u7DB2\u7AD9"}
                   {/* Heroicons: arrow-top-right-on-square */}
@@ -102,7 +102,7 @@ export default function Footer() {
                   href="https://github.com/lgscvb/claude-code-quickstart"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm hover:text-white transition-colors duration-200 cursor-pointer inline-flex items-center gap-1.5"
+                  className="text-[13px] text-[#aeaeb2] hover:text-white transition-colors duration-200 cursor-pointer inline-flex items-center gap-1.5"
                 >
                   Quick Start {"\u5B89\u88DD\u5305"}
                   {/* Heroicons: arrow-top-right-on-square */}
@@ -127,12 +127,12 @@ export default function Footer() {
 
         {/* ---- Bottom bar ---- */}
         <div className="mt-12 pt-8 border-t border-white/[0.06] flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-[#aeaeb2]/60">
             &copy; {new Date().getFullYear()} AI{" "}
             {"\u6578\u4F4D\u7D20\u990A\u5BE6\u6230\u73ED"}. All rights
             reserved.
           </p>
-          <span className="inline-flex items-center gap-1.5 text-xs text-slate-500">
+          <span className="inline-flex items-center gap-1.5 text-xs text-[#aeaeb2]/60">
             {/* Heroicons: cpu-chip */}
             <svg
               className="h-3.5 w-3.5"

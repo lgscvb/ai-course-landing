@@ -14,7 +14,7 @@ const painPoints = [
 const useCases = [
   {
     industry: "電商經營",
-    pillClass: "bg-[#ff9500]/10 text-[#ff9500]",
+    pillClass: "bg-[#0071e3]/10 text-[#0071e3]",
     before:
       "蝦皮有新訂單 → 手動抄到 Excel。客戶 LINE 問有貨嗎 → 去蝦皮後台查庫存再回覆。每月底三個平台手動對帳。",
     after:

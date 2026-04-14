@@ -647,11 +647,11 @@ function UserJourney() {
       line: "bg-[#ff6568]/30",
     },
     gold: {
-      border: "border-[#ff9500]/40",
-      bg: "bg-[#ff9500]/10",
-      text: "text-[#ff9500]",
-      dot: "bg-[#ff9500]",
-      line: "bg-[#ff9500]/30",
+      border: "border-[#0071e3]/40",
+      bg: "bg-[#0071e3]/10",
+      text: "text-[#0071e3]",
+      dot: "bg-[#0071e3]",
+      line: "bg-[#0071e3]/30",
     },
   };
 
@@ -668,7 +668,7 @@ function UserJourney() {
       <div className="hidden md:block">
         <div className="relative flex items-start justify-between max-w-4xl mx-auto">
           {/* Connecting line */}
-          <div className="absolute top-6 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-[#30d158]/40 via-[#ff6568]/40 to-[#ff9500]/40" />
+          <div className="absolute top-6 left-[10%] right-[10%] h-0.5 bg-gradient-to-r from-[#30d158]/40 via-[#ff6568]/40 to-[#0071e3]/40" />
 
           {journeyStages.map((stage, i) => {
             const colors = stageColorMap[stage.color];
@@ -687,7 +687,7 @@ function UserJourney() {
                     isHighlighted
                       ? "bg-[#ff6568] ring-4 ring-[#ff6568]/30 animate-pulse"
                       : isLast
-                        ? "bg-gradient-to-br from-[#ff9500] to-[#e08600] ring-4 ring-[#ff9500]/30"
+                        ? "bg-gradient-to-br from-[#0071e3] to-[#005bb5] ring-4 ring-[#0071e3]/30"
                         : `${colors.bg} border-2 ${colors.border}`
                   }`}
                 >
@@ -737,9 +737,9 @@ function UserJourney() {
 
                 {/* Arrow pointing to last stage */}
                 {isLast && (
-                  <div className="mt-3 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#ff9500]/10 to-[#e08600]/10 border border-[#ff9500]/30">
+                  <div className="mt-3 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#0071e3]/10 to-[#005bb5]/10 border border-[#0071e3]/30">
                     <p className="text-[11px] font-bold gradient-text-gold flex items-center gap-1">
-                      <ArrowRightIcon className="h-3 w-3 text-[#ff9500]" />
+                      <ArrowRightIcon className="h-3 w-3 text-[#0071e3]" />
                       直達這裡
                     </p>
                   </div>
@@ -770,7 +770,7 @@ function UserJourney() {
                         stage.color === "red"
                           ? "bg-[#ff6568]/30"
                           : stage.color === "gold"
-                            ? "bg-[#ff9500]/30"
+                            ? "bg-[#0071e3]/30"
                             : "bg-[#30d158]/30"
                       }`}
                     />
@@ -782,7 +782,7 @@ function UserJourney() {
                       isHighlighted
                         ? "bg-[#ff6568] ring-4 ring-[#ff6568]/30 animate-pulse"
                         : isLast
-                          ? "bg-gradient-to-br from-[#ff9500] to-[#e08600] ring-4 ring-[#ff9500]/30"
+                          ? "bg-gradient-to-br from-[#0071e3] to-[#005bb5] ring-4 ring-[#0071e3]/30"
                           : `${colors.bg} border-2 ${colors.border}`
                     }`}
                   >
@@ -805,7 +805,7 @@ function UserJourney() {
                           ? "bg-[#30d158]/30"
                           : stage.color === "red"
                             ? "bg-[#ff6568]/30"
-                            : "bg-[#ff9500]/30"
+                            : "bg-[#0071e3]/30"
                       }`}
                     />
                   )}
@@ -841,8 +841,8 @@ function UserJourney() {
                     </div>
                   )}
                   {isLast && (
-                    <div className="mt-2 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-[#ff9500]/10 to-[#e08600]/10 border border-[#ff9500]/30">
-                      <ArrowRightIcon className="h-3 w-3 text-[#ff9500]" />
+                    <div className="mt-2 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gradient-to-r from-[#0071e3]/10 to-[#005bb5]/10 border border-[#0071e3]/30">
+                      <ArrowRightIcon className="h-3 w-3 text-[#0071e3]" />
                       <p className="text-[11px] font-bold gradient-text-gold">
                         直達這裡
                       </p>

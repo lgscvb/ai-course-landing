@@ -30,8 +30,8 @@
   --color-hero-card: #2a2a2e;
   --color-primary: #0071e3;
   --color-primary-light: #0077ed;
-  --color-accent: #ff9500;
-  --color-accent-hover: #e68600;
+  --color-accent: #0071e3;
+  --color-accent-hover: #0077ed;
   --color-success: #30d158;
   --color-purple: #7850ff;
   --color-hero-text: #ffffff;
@@ -43,8 +43,8 @@
   --color-border-light: rgba(0,0,0,0.07);
   --color-border-dark: rgba(255,255,255,0.06);
   /* Legacy aliases */
-  --color-cta: #ff9500;
-  --color-cta-dark: #e68600;
+  --color-cta: #0071e3;
+  --color-cta-dark: #005bb5;
   --color-dark-bg: #000000;
   --color-dark-surface: #1c1c1e;
   --color-background: #f5f5f7;
@@ -75,7 +75,7 @@ body {
   background-clip: text;
 }
 .gradient-text-gold {
-  background: linear-gradient(135deg, #ff9500, #ffcc00);
+  background: linear-gradient(135deg, #0071e3, #00b4d8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

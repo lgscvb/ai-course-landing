@@ -21,7 +21,7 @@ interface Instructor {
   initial: string;
   role: string;
   hours: string;
-  color: "blue" | "violet";
+  color: "indigo" | "violet";
   quote: string;
   credentials: string[];
   teaches: string[];
@@ -34,7 +34,7 @@ const instructors: Instructor[] = [
     initial: "戴",
     role: "AI 自動化 / Claude Code 實戰",
     hours: "12 小時（Day 1-2）",
-    color: "blue",
+    color: "indigo",
     quote:
       "我現在同時是兩間公司的負責人，做三份工作，維持不動產投資人的身份，還在大學和政府計畫擔任講師。一天只工作四小時，一週工作四天。90% 的工作都是用口述完成的。",
     credentials: [
@@ -217,14 +217,14 @@ const iconMap = {
 
 function ProfileCard({ inst }: { inst: Instructor }) {
   const gradientBg =
-    inst.color === "blue"
-      ? "bg-gradient-to-br from-primary to-blue-700"
+    inst.color === "indigo"
+      ? "bg-gradient-to-br from-primary to-indigo-700"
       : "bg-gradient-to-br from-violet-600 to-violet-800";
 
   return (
     <div className={`rounded-2xl p-8 text-white ${gradientBg}`}>
       {/* Avatar initial */}
-      <div className="h-24 w-24 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center text-4xl font-black mb-8">
+      <div className="h-20 w-20 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center text-4xl font-black mb-8">
         {inst.initial}
       </div>
 
@@ -272,35 +272,35 @@ function ProfileCard({ inst }: { inst: Instructor }) {
 
 function InstructorDetails({ inst }: { inst: Instructor }) {
   const borderColor =
-    inst.color === "blue" ? "border-primary/40" : "border-violet-400/40";
+    inst.color === "indigo" ? "border-primary/40" : "border-violet-400/40";
   const numberBg =
-    inst.color === "blue" ? "bg-primary" : "bg-violet-600";
+    inst.color === "indigo" ? "bg-primary" : "bg-violet-600";
 
   return (
     <div>
       {/* Quote */}
       <blockquote className={`border-l-4 ${borderColor} pl-6 mb-10`}>
-        <p className="text-lg sm:text-xl text-text leading-relaxed font-medium">
+        <p className="text-lg sm:text-xl text-light-text leading-relaxed font-medium italic">
           &ldquo;{inst.quote}&rdquo;
         </p>
       </blockquote>
 
       {/* Teaching content */}
-      <h3 className="text-sm font-bold uppercase tracking-widest text-text-muted mb-5">
+      <h3 className="text-sm font-bold uppercase tracking-widest text-light-text-secondary mb-5">
         教學內容
       </h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {inst.teaches.map((t, i) => (
           <div
             key={i}
-            className="flex items-start gap-3 rounded-xl border border-border bg-surface p-4 transition-colors duration-200 hover:border-text-muted"
+            className="flex items-start gap-3 rounded-xl border border-border-light bg-light-surface p-4 transition-all duration-200 hover:shadow-md hover:border-primary/30 cursor-pointer"
           >
             <span
               className={`flex-shrink-0 h-6 w-6 rounded-lg flex items-center justify-center text-xs font-bold text-white ${numberBg}`}
             >
               {i + 1}
             </span>
-            <span className="text-sm text-text-secondary leading-relaxed">
+            <span className="text-sm text-light-text-secondary leading-relaxed">
               {t}
             </span>
           </div>
@@ -318,12 +318,12 @@ function WhyClaudeCodeCard({
   const Icon = iconMap[item.icon];
 
   return (
-    <div className="rounded-2xl border border-border bg-surface p-8 transition-shadow duration-200 hover:shadow-md">
+    <div className="rounded-2xl border border-border-light bg-light-surface p-8 transition-shadow duration-200 hover:shadow-md">
       <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
         <Icon className="h-6 w-6 text-primary" />
       </div>
-      <h3 className="text-lg font-black text-text mb-3">{item.title}</h3>
-      <p className="text-sm text-text-secondary leading-relaxed">
+      <h3 className="text-lg font-black text-light-text mb-3">{item.title}</h3>
+      <p className="text-sm text-light-text-secondary leading-relaxed">
         {item.body}
       </p>
     </div>
@@ -338,15 +338,15 @@ export default function InstructorsPage() {
   return (
     <>
       {/* ---- Header ---- */}
-      <section className="bg-dark-bg pt-28 pb-16 sm:pb-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-sm font-semibold tracking-widest uppercase text-primary mb-4">
-            Instructors
+      <section className="bg-hero-bg pt-32 pb-16">
+        <div className="mx-auto max-w-5xl px-6">
+          <p className="text-xs font-bold tracking-[0.2em] text-primary-light uppercase mb-3">
+            INSTRUCTORS
           </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight tracking-tight mb-6">
             講師介紹
           </h1>
-          <p className="text-lg text-slate-400 max-w-2xl leading-relaxed">
+          <p className="text-lg text-hero-muted max-w-2xl leading-relaxed">
             兩位講師、兩個專長。前半程教你用 AI 自動化工作流程，後半程教你用 AI
             做影片和設計。
           </p>
@@ -354,8 +354,8 @@ export default function InstructorsPage() {
       </section>
 
       {/* ---- Instructor Profiles ---- */}
-      <section className="py-16 sm:py-24">
-        <div className="mx-auto max-w-6xl px-6 space-y-24">
+      <section className="bg-light-bg py-16 sm:py-24">
+        <div className="mx-auto max-w-5xl px-6 space-y-24">
           {instructors.map((inst, index) => (
             <div
               key={index}
@@ -373,13 +373,13 @@ export default function InstructorsPage() {
       </section>
 
       {/* ---- Why Claude Code ---- */}
-      <section className="border-t border-border py-16 sm:py-24">
-        <div className="mx-auto max-w-6xl px-6">
+      <section className="bg-light-bg py-16 sm:py-24">
+        <div className="mx-auto max-w-5xl px-6">
           <div className="text-center mb-14">
-            <p className="text-sm font-semibold tracking-widest uppercase text-primary mb-4">
-              Why Claude Code
+            <p className="text-xs font-bold tracking-[0.2em] text-primary-light uppercase mb-3">
+              WHY CLAUDE CODE
             </p>
-            <h2 className="text-3xl sm:text-4xl font-black text-text">
+            <h2 className="text-3xl sm:text-4xl font-black text-light-text">
               為什麼教 Claude Code？
             </h2>
           </div>
@@ -393,12 +393,12 @@ export default function InstructorsPage() {
       </section>
 
       {/* ---- Bottom CTA ---- */}
-      <section className="bg-dark-bg py-20">
-        <div className="mx-auto max-w-6xl px-6 text-center">
+      <section className="bg-hero-bg py-20">
+        <div className="mx-auto max-w-5xl px-6 text-center">
           <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
             跟對的人學，少走三年彎路
           </h2>
-          <p className="text-slate-400 mb-10 max-w-lg mx-auto">
+          <p className="text-hero-muted mb-10 max-w-lg mx-auto">
             24 小時，兩位講師帶你從零到能用 AI 工作。
           </p>
           <CTAButton size="lg" />

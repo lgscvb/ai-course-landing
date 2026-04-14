@@ -38,28 +38,69 @@ const faqs = [
   },
 ];
 
-function FAQItem({ q, a }: { q: string; a: string }) {
+function ChevronIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      className={`h-5 w-5 flex-shrink-0 text-text-muted transition-transform duration-200 ${
+        open ? "rotate-180" : ""
+      }`}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  );
+}
+
+function FAQItem({
+  q,
+  a,
+  index,
+}: {
+  q: string;
+  a: string;
+  index: number;
+}) {
   const [open, setOpen] = useState(false);
+  const panelId = `faq-panel-${index}`;
+  const buttonId = `faq-button-${index}`;
 
   return (
-    <div className="border-b border-gray-200">
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between py-5 text-left"
-      >
-        <span className="font-semibold text-gray-900 pr-4">{q}</span>
-        <svg
-          className={`h-5 w-5 flex-shrink-0 text-gray-500 transition-transform ${open ? "rotate-180" : ""}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+    <div className="border-b border-border">
+      <h3>
+        <button
+          id={buttonId}
+          onClick={() => setOpen(!open)}
+          aria-expanded={open}
+          aria-controls={panelId}
+          className="group flex w-full cursor-pointer items-center justify-between py-6 text-left transition-colors duration-200 hover:text-primary"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-      {open && (
-        <div className="pb-5 text-gray-600 leading-relaxed">{a}</div>
-      )}
+          <span className="pr-8 text-lg font-bold text-text group-hover:text-primary transition-colors duration-200">
+            {q}
+          </span>
+          <ChevronIcon open={open} />
+        </button>
+      </h3>
+
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        className={`grid transition-all duration-200 ${
+          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <p className="pb-6 text-text-secondary leading-relaxed">{a}</p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -67,37 +108,50 @@ function FAQItem({ q, a }: { q: string; a: string }) {
 export default function FAQPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-indigo-950 py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">常見問題</h1>
-          <p className="text-lg text-indigo-200 max-w-2xl">
-            有疑問？這裡整理了最常被問到的問題。如果找不到答案，歡迎直接聯繫我們。
+      {/* Page Header */}
+      <section className="bg-dark-bg pt-28 pb-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl">
+            常見問題
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg text-slate-400 leading-relaxed">
+            有疑問？這裡整理了最常被問到的問題。
+            <br className="hidden sm:block" />
+            如果找不到答案，歡迎直接聯繫我們。
           </p>
         </div>
       </section>
 
-      {/* FAQ List */}
+      {/* FAQ Accordion */}
       <section className="py-16 sm:py-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <div className="divide-y divide-gray-200 border-t border-gray-200">
+          <div className="border-t border-border">
             {faqs.map((faq, i) => (
-              <FAQItem key={i} q={faq.q} a={faq.a} />
+              <FAQItem key={i} q={faq.q} a={faq.a} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="gradient-hero py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
-            不是 AI 不夠聰明，<br />是你不知道怎麼跟它說話。
+      {/* Bottom CTA */}
+      <section className="bg-primary">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:py-24 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl">
+            不是 AI 不夠聰明，
+            <br />
+            是你不知道怎麼跟它說話。
           </h2>
-          <p className="text-lg text-indigo-200 mb-10 max-w-2xl mx-auto">
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-blue-100 leading-relaxed">
             24 小時學會讓 AI 真正動手做事。學費 $0，名額有限。
           </p>
-          <CTAButton size="lg" variant="primary" />
+          <div className="mt-10">
+            <CTAButton
+              size="lg"
+              variant="primary"
+              label="免費報名"
+              className="bg-white text-primary hover:bg-slate-50 font-bold shadow-lg"
+            />
+          </div>
         </div>
       </section>
     </>

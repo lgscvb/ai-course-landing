@@ -2,50 +2,51 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary: #4f46e5;
-  --primary-dark: #3730a3;
-  --accent: #f59e0b;
-  --accent-dark: #d97706;
-  --surface: #f8fafc;
-  --muted: #64748b;
+  --primary: #3B82F6;
+  --primary-dark: #2563EB;
+  --primary-light: #DBEAFE;
+  --cta: #F97316;
+  --cta-dark: #EA580C;
+  --cta-light: #FFF7ED;
+  --background: #F8FAFC;
+  --surface: #FFFFFF;
+  --text: #1E293B;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --border: #E2E8F0;
+  --dark-bg: #0F172A;
+  --dark-surface: #1E293B;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
-  --color-accent: var(--accent);
-  --color-accent-dark: var(--accent-dark);
+  --color-primary-light: var(--primary-light);
+  --color-cta: var(--cta);
+  --color-cta-dark: var(--cta-dark);
+  --color-cta-light: var(--cta-light);
+  --color-background: var(--background);
   --color-surface: var(--surface);
-  --color-muted: var(--muted);
-  --font-sans: "Noto Sans TC", var(--font-geist-sans), sans-serif;
-  --font-mono: var(--font-geist-mono);
+  --color-text: var(--text);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-dark-bg: var(--dark-bg);
+  --color-dark-surface: var(--dark-surface);
+  --font-sans: "Noto Sans TC", system-ui, sans-serif;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: "Noto Sans TC", sans-serif;
+  color: var(--text);
+  font-family: "Noto Sans TC", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.gradient-hero {
-  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 30%, #4f46e5 70%, #6366f1 100%);
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #4f46e5, #7c3aed, #a855f7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.card-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(79, 70, 229, 0.15);
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

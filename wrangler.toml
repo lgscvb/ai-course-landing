@@ -1,0 +1,21 @@
+#:schema node_modules/wrangler/config-schema.json
+# CF Pages config — 部署透過 GitHub push 自動觸發 CF Pages Builds
+# 本機 dev：npx wrangler pages dev ./out
+# 禁本機 wrangler pages deploy（會堆 docker image，參考全域 CLAUDE.md）
+
+name = "lico-website"
+pages_build_output_dir = "./out"
+compatibility_date = "2025-04-01"
+compatibility_flags = ["nodejs_compat"]
+
+# D1 database binding — 報名表收單
+[[d1_databases]]
+binding = "DB"
+database_name = "ai-course-enrollments"
+database_id = "31db0c4f-3dd3-4a06-85ed-18c5d663fb22"
+
+# 環境變數（非機密放這，機密用 dashboard 或 wrangler pages secret）
+[vars]
+ADMIN_USERNAME = "admin"
+# ADMIN_PASSWORD — 透過 dashboard 設 secret 或 .dev.vars（本機）
+# NOTIFY_EMAIL — 後續接 Resend / CF Email Routing 時設

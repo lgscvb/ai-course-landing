@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-const GOOGLE_FORM_URL = "#";
+const ENROLL_HREF = "/enroll";
 
 const navItems = [
   { label: "\u8AB2\u7A0B\u5927\u7DB1", href: "/syllabus" },
@@ -57,10 +57,8 @@ export default function Header() {
                 </Link>
               ))}
 
-              <a
-                href={GOOGLE_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={ENROLL_HREF}
                 className="ml-3 inline-flex items-center gap-1.5 rounded-full bg-[#0071e3] px-5 py-2 text-[13px] font-medium text-white hover:bg-[#0077ed] hover:scale-[1.025] transition-all duration-200 cursor-pointer"
               >
                 {"\u514D\u8CBB\u5831\u540D"}
@@ -78,7 +76,7 @@ export default function Header() {
                     d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
 
             {/* ---- Mobile hamburger ---- */}
@@ -127,10 +125,8 @@ export default function Header() {
                   {item.label}
                 </Link>
               ))}
-              <a
-                href={GOOGLE_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={ENROLL_HREF}
                 className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-full bg-[#0071e3] px-5 py-2.5 text-center text-[13px] font-medium text-white hover:bg-[#0077ed] transition-all duration-200 cursor-pointer"
                 onClick={() => setIsOpen(false)}
               >
@@ -148,7 +144,7 @@ export default function Header() {
                     d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                   />
                 </svg>
-              </a>
+              </Link>
             </div>
           )}
         </nav>

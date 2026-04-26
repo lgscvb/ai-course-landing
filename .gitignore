@@ -12,6 +12,9 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+/playwright/.cache/
 
 # next.js
 /.next/
@@ -30,8 +33,23 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env (keep example, block real values)
 .env*
+!.env.example
+.dev.vars
+.dev.vars.*
+
+# wrangler local state (D1 sqlite, KV cache, build cache)
+.wrangler/
+
+# Apps Script (clasp) — gas/ legacy reference, secrets gitignored
+gas/.clasp.json
+gas/.clasprc.json
+
+# editor / tool local
+.claude/
+.vscode/
+.idea/
 
 # vercel
 .vercel

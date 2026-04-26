@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const GOOGLE_FORM_URL = "#";
+const ENROLL_HREF = "/enroll";
 
 interface CTAButtonProps {
   size?: "sm" | "md" | "lg";
@@ -54,8 +54,8 @@ export default function CTAButton({
   };
 
   const text = label || defaultLabels[variant];
-  const isExternal = !href || href.startsWith("http") || href === "#";
-  const targetHref = href || GOOGLE_FORM_URL;
+  const targetHref = href || ENROLL_HREF;
+  const isExternal = targetHref.startsWith("http") || targetHref === "#";
 
   const cls = [
     "inline-flex items-center justify-center rounded-full",

@@ -3,7 +3,7 @@
 # 本機 dev：npx wrangler pages dev ./out
 # 禁本機 wrangler pages deploy（會堆 docker image，參考全域 CLAUDE.md）
 
-name = "lico-website"
+name = "ai-course-landing"
 pages_build_output_dir = "./out"
 compatibility_date = "2025-04-01"
 compatibility_flags = ["nodejs_compat"]

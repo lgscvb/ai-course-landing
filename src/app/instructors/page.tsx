@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CTAButton from "@/components/CTAButton";
+import InstructorsTOC from "@/components/InstructorsTOC";
 
 export const metadata: Metadata = {
   title: "講師介紹",
@@ -17,6 +18,7 @@ interface Resource {
 }
 
 interface Instructor {
+  id: string;
   name: string;
   initial: string;
   role: string;
@@ -32,6 +34,7 @@ interface Instructor {
 
 const instructors: Instructor[] = [
   {
+    id: "dai",
     name: "戴豪廷",
     initial: "戴",
     role: "AI 自動化 / Claude Code 實戰",
@@ -74,6 +77,7 @@ const instructors: Instructor[] = [
     ],
   },
   {
+    id: "wang",
     name: "王琮瑋（Tobias）",
     initial: "王",
     role: "AI 多媒體 / 影片生成 / 設計",
@@ -886,20 +890,27 @@ export default function InstructorsPage() {
 
       {/* ---- Instructor Profiles ---- */}
       <section className="bg-light-bg py-16 sm:py-24">
-        <div className="mx-auto max-w-5xl px-6 space-y-24">
-          {instructors.map((inst, index) => (
-            <div
-              key={index}
-              className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14"
-            >
-              <div className="lg:col-span-2">
-                <ProfileCard inst={inst} />
-              </div>
-              <div className="lg:col-span-3 flex flex-col justify-center">
-                <InstructorDetails inst={inst} />
-              </div>
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="lg:grid lg:grid-cols-[200px_1fr] lg:gap-12">
+            <InstructorsTOC />
+
+            <div className="space-y-24">
+              {instructors.map((inst) => (
+                <div
+                  key={inst.id}
+                  id={inst.id}
+                  className="grid scroll-mt-20 grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14"
+                >
+                  <div className="lg:col-span-2">
+                    <ProfileCard inst={inst} />
+                  </div>
+                  <div className="lg:col-span-3 flex flex-col justify-center">
+                    <InstructorDetails inst={inst} />
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </section>
 

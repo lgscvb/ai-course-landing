@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CTAButton from "@/components/CTAButton";
+import SyllabusTOC from "@/components/SyllabusTOC";
 
 export const metadata: Metadata = {
   title: "課程大綱",
@@ -423,32 +424,40 @@ export default function SyllabusPage() {
       {/* ---- Timeline ---- */}
       <section className="bg-light-bg py-16 sm:py-24">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="space-y-20">
-            {days.map((day) => {
-              const lineColor =
-                day.color === "blue"
-                  ? "border-[#0071e3]/30"
-                  : "border-[#7850ff]/30";
+          <div className="lg:grid lg:grid-cols-[200px_1fr] lg:gap-12">
+            <SyllabusTOC />
 
-              return (
-                <div key={day.number}>
-                  <DayHeader day={day} />
+            <div className="space-y-20">
+              {days.map((day) => {
+                const lineColor =
+                  day.color === "blue"
+                    ? "border-[#0071e3]/30"
+                    : "border-[#7850ff]/30";
 
-                  {/* Sessions on timeline */}
+                return (
                   <div
-                    className={`mt-8 ml-[1.9rem] border-l-2 ${lineColor} pl-8 space-y-6`}
+                    key={day.number}
+                    id={`day-${day.number}`}
+                    className="scroll-mt-20"
                   >
-                    {day.sessions.map((session, si) => (
-                      <SessionCard
-                        key={si}
-                        session={session}
-                        color={day.color}
-                      />
-                    ))}
+                    <DayHeader day={day} />
+
+                    {/* Sessions on timeline */}
+                    <div
+                      className={`mt-8 ml-[1.9rem] border-l-2 ${lineColor} pl-8 space-y-6`}
+                    >
+                      {day.sessions.map((session, si) => (
+                        <SessionCard
+                          key={si}
+                          session={session}
+                          color={day.color}
+                        />
+                      ))}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

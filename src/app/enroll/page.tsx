@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Reveal from "@/components/Reveal";
 
 type FormState = {
   name: string;
@@ -148,17 +149,23 @@ export default function EnrollPage() {
           }}
         />
         <div className="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
-          <p className="mb-3 text-[12px] font-semibold uppercase tracking-[0.1em] text-accent">
-            FREE ENROLLMENT
-          </p>
-          <h1 className="text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl">
-            免費報名
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-hero-muted sm:text-lg">
-            經濟部產業人才投資方案全額補助。
-            <br className="hidden sm:inline" />
-            填完表單後，講師 24 小時內回覆，確認上課時間與地點。
-          </p>
+          <Reveal delay={0}>
+            <p className="mb-3 text-[12px] font-semibold uppercase tracking-[0.1em] text-accent">
+              FREE ENROLLMENT
+            </p>
+          </Reveal>
+          <Reveal delay={80}>
+            <h1 className="text-4xl font-black tracking-[-0.03em] text-white sm:text-5xl">
+              免費報名
+            </h1>
+          </Reveal>
+          <Reveal delay={160}>
+            <p className="mx-auto mt-5 max-w-xl text-[15px] leading-relaxed text-hero-muted sm:text-lg">
+              經濟部產業人才投資方案全額補助。
+              <br className="hidden sm:inline" />
+              填完表單後，講師 24 小時內回覆，確認上課時間與地點。
+            </p>
+          </Reveal>
         </div>
       </section>
 

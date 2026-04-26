@@ -21,6 +21,8 @@
   --shadow-card: 0 2px 20px rgba(0,0,0,0.07);
   --shadow-hover: 0 20px 50px rgba(0,0,0,0.11);
   --ease-out: cubic-bezier(0.16,1,0.3,1);
+  /* Alias used by motion utilities (.reveal, .card-lico) */
+  --lico-ease: cubic-bezier(0.16,1,0.3,1);
 }
 
 /* ─── Tailwind v4 @theme inline ─────────────────────────────── */
@@ -57,6 +59,14 @@
   --font-sans: "Inter", "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* ─── Smooth scroll + anchor offset ─────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+[id] {
+  scroll-margin-top: 80px;
+}
+
 /* ─── Base ───────────────────────────────────────────────────── */
 body {
   background: var(--c-white);
@@ -85,8 +95,8 @@ body {
 .glow-card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.06);
-  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
-              box-shadow 0.35s cubic-bezier(0.16,1,0.3,1);
+  transition: transform 350ms var(--lico-ease),
+              box-shadow 350ms var(--lico-ease);
 }
 .glow-card:hover {
   border-color: rgba(255,255,255,0.12);
@@ -97,12 +107,25 @@ body {
 /* ─── Card transitions (Lico) ───────────────────────────────── */
 .card-lico {
   border-radius: 24px;
-  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
-              box-shadow 0.35s cubic-bezier(0.16,1,0.3,1);
+  transition: transform 350ms var(--lico-ease),
+              box-shadow 350ms var(--lico-ease);
 }
 .card-lico:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
   box-shadow: 0 20px 50px rgba(0,0,0,0.11);
+}
+
+/* ─── Scroll reveal ──────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms var(--lico-ease),
+              transform 700ms var(--lico-ease);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 /* ─── Lico typography tokens ────────────────────────────────── */
@@ -132,8 +155,25 @@ body {
   color: #6e6e73;
 }
 
+/* ─── Hide scrollbar (for mobile TOC chip strip) ─────────────── */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* ─── Accessibility ──────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

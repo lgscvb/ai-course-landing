@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Reveal from "@/components/Reveal";
+import CountUp from "@/components/CountUp";
 
 type Row = {
   id: number;
@@ -57,6 +59,13 @@ export default function AdminPage() {
   const v24 = rows?.filter((r) => r.version === "24hr").length ?? 0;
   const newCount = rows?.filter((r) => r.status === "new").length ?? 0;
 
+  const stats = [
+    { label: "總報名數", value: total, color: "text-white" },
+    { label: "12hr 班", value: v12, color: "text-accent" },
+    { label: "24hr 班", value: v24, color: "text-[#7850ff]" },
+    { label: "未聯絡", value: newCount, color: "text-[#30d158]" },
+  ];
+
   return (
     <>
       {/* ─── Hero ─────────────────────────────────────── */}
@@ -64,51 +73,53 @@ export default function AdminPage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.1em] text-accent">
-                ADMIN
-              </p>
-              <h1 className="text-3xl font-black tracking-[-0.03em] text-white sm:text-4xl">
-                報名後台
-              </h1>
-              <p className="mt-2 text-[14px] text-hero-muted">
-                受 Basic Auth 保護。資料來源：D1 `ai-course-enrollments`
-              </p>
+              <Reveal delay={0}>
+                <p className="mb-2 text-[12px] font-semibold uppercase tracking-[0.1em] text-accent">
+                  ADMIN
+                </p>
+              </Reveal>
+              <Reveal delay={80}>
+                <h1 className="text-3xl font-black tracking-[-0.03em] text-white sm:text-4xl">
+                  報名後台
+                </h1>
+              </Reveal>
+              <Reveal delay={160}>
+                <p className="mt-2 text-[14px] text-hero-muted">
+                  受 Basic Auth 保護。資料來源：D1 `ai-course-enrollments`
+                </p>
+              </Reveal>
             </div>
-            <div className="flex gap-3">
-              <button
-                onClick={load}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-[13px] font-medium text-white transition-all duration-200 hover:bg-white/10"
-              >
-                重新整理
-              </button>
-              <a
-                href="/api/admin?format=csv"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0071e3] px-5 py-2.5 text-[13px] font-medium text-white transition-all duration-200 hover:bg-[#0077ed] hover:scale-[1.025]"
-              >
-                匯出 CSV
-              </a>
-            </div>
+            <Reveal delay={240}>
+              <div className="flex gap-3">
+                <button
+                  onClick={load}
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-[13px] font-medium text-white transition-all duration-200 hover:bg-white/10"
+                >
+                  重新整理
+                </button>
+                <a
+                  href="/api/admin?format=csv"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#0071e3] px-5 py-2.5 text-[13px] font-medium text-white transition-all duration-200 hover:bg-[#0077ed] hover:scale-[1.025]"
+                >
+                  匯出 CSV
+                </a>
+              </div>
+            </Reveal>
           </div>
 
           {/* Stats */}
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {[
-              { label: "總報名數", value: total, color: "text-white" },
-              { label: "12hr 班", value: v12, color: "text-accent" },
-              { label: "24hr 班", value: v24, color: "text-[#7850ff]" },
-              { label: "未聯絡", value: newCount, color: "text-[#30d158]" },
-            ].map((s) => (
-              <div
-                key={s.label}
-                className="rounded-[20px] border border-white/10 bg-white/[0.04] p-5"
-              >
-                <p
-                  className={`text-3xl font-black tracking-[-0.03em] ${s.color}`}
-                >
-                  {loading ? "—" : s.value}
-                </p>
-                <p className="mt-1 text-[12px] text-hero-muted">{s.label}</p>
-              </div>
+            {stats.map((s, i) => (
+              <Reveal key={s.label} delay={i * 80}>
+                <div className="h-full rounded-[20px] border border-white/10 bg-white/[0.04] p-5">
+                  <p
+                    className={`text-3xl font-black tracking-[-0.03em] ${s.color}`}
+                  >
+                    {loading ? "—" : <CountUp value={s.value} />}
+                  </p>
+                  <p className="mt-1 text-[12px] text-hero-muted">{s.label}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
